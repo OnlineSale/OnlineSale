@@ -1,0 +1,6 @@
+# Created by xichur .ignore support plugin (hsz.mobi)
+.settings
+.project
+.classpath
+*.iml
+target
