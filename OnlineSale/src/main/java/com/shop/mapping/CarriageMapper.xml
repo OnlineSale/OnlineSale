@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.shop.dao.CarriageMapper" >
+  <resultMap id="BaseResultMap" type="com.shop.model.Carriage" >
+    <id column="carriageId" property="carriageid" jdbcType="INTEGER" />
+    <result column="carriageName" property="carriagename" jdbcType="VARCHAR" />
+    <result column="carriagePrice" property="carriageprice" jdbcType="DOUBLE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    carriageId, carriageName, carriagePrice
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from carriage
+    where carriageId = #{carriageid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from carriage
+    where carriageId = #{carriageid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shop.model.Carriage" >
+    insert into carriage (carriageId, carriageName, carriagePrice
+      )
+    values (#{carriageid,jdbcType=INTEGER}, #{carriagename,jdbcType=VARCHAR}, #{carriageprice,jdbcType=DOUBLE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.shop.model.Carriage" >
+    insert into carriage
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="carriageid != null" >
+        carriageId,
+      </if>
+      <if test="carriagename != null" >
+        carriageName,
+      </if>
+      <if test="carriageprice != null" >
+        carriagePrice,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="carriageid != null" >
+        #{carriageid,jdbcType=INTEGER},
+      </if>
+      <if test="carriagename != null" >
+        #{carriagename,jdbcType=VARCHAR},
+      </if>
+      <if test="carriageprice != null" >
+        #{carriageprice,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shop.model.Carriage" >
+    update carriage
+    <set >
+      <if test="carriagename != null" >
+        carriageName = #{carriagename,jdbcType=VARCHAR},
+      </if>
+      <if test="carriageprice != null" >
+        carriagePrice = #{carriageprice,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where carriageId = #{carriageid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shop.model.Carriage" >
+    update carriage
+    set carriageName = #{carriagename,jdbcType=VARCHAR},
+      carriagePrice = #{carriageprice,jdbcType=DOUBLE}
+    where carriageId = #{carriageid,jdbcType=INTEGER}
+  </update>
+</mapper>
