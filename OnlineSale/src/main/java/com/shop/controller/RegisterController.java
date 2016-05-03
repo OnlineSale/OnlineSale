@@ -20,7 +20,7 @@ public class RegisterController {
     @Resource
     RegisterService registerService;
 
-    @RequestMapping("signup")
+    @RequestMapping("register")
     @ResponseBody
     public Object handleSignUp(RegisterInfo registerInfo, BindingResult bindingResult, HttpSession session){
         if(bindingResult.hasErrors()){

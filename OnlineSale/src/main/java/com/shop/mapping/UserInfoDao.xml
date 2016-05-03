@@ -3,10 +3,10 @@
 <mapper namespace="com.shop.dao.UserInfoDao">
     
     <select id="getSumOfSameUserName" resultType="java.lang.Integer">
-        SELECT COUNT (*) FROM `user` WHERE `user`.`user_name`=#{userName}
+        SELECT COUNT(*) FROM `user` WHERE `user`.`username`=#{userName}
     </select>
 
     <insert id="addNewUser" parameterType="com.shop.model.RegisterInfo">
-      
+      INSERT INTO `user` (`username`,`password`,`registTime`) VALUE (#{userName},#{passWord},now())
     </insert>
 </mapper>

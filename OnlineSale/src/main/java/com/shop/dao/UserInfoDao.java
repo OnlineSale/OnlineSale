@@ -9,5 +9,5 @@ import org.apache.ibatis.annotations.Param;
 public interface UserInfoDao {
     public Integer getSumOfSameUserName(@Param("userName") String userName);
 
-    void addNewUser(RegisterInfo registerInfo);
+    int addNewUser(RegisterInfo registerInfo);
 }
