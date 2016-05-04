@@ -1,12 +1,17 @@
 package com.shop.model;
 
+import javax.validation.constraints.Pattern;
+
 /**
  * Created by yuan on 16-5-3.
  */
 public class RegisterInfo {
 
+
+    @Pattern(regexp = "\\*",message = "{Pattern.registerinfo.userName}")
     private String userName;
 
+    @Pattern(regexp = "^[-\\da-zA-Z`=\\\\\\[\\];',./~!@#$%^&*()_+|{}:\"<>?]*$")
     private String passWord;
 
     //验证码
