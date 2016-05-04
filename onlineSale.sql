@@ -4,13 +4,13 @@ Navicat MySQL Data Transfer
 Source Server         : mysql
 Source Server Version : 50545
 Source Host           : localhost:3306
-Source Database       : onlinesale
+Source Database       : onlineSale
 
 Target Server Type    : MYSQL
 Target Server Version : 50545
 File Encoding         : 65001
 
-Date: 2016-05-03 22:59:42
+Date: 2016-05-04 17:04:35
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -151,10 +151,10 @@ CREATE TABLE `order` (
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for orderdetail
+-- Table structure for orderDetail
 -- ----------------------------
-DROP TABLE IF EXISTS `orderdetail`;
-CREATE TABLE `orderdetail` (
+DROP TABLE IF EXISTS `orderDetail`;
+CREATE TABLE `orderDetail` (
   `orderId` int(11) NOT NULL,
   `goodId` int(11) DEFAULT NULL,
   `goodNumber` int(11) DEFAULT NULL,
@@ -162,7 +162,7 @@ CREATE TABLE `orderdetail` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of orderdetail
+-- Records of orderDetail
 -- ----------------------------
 
 -- ----------------------------
@@ -218,10 +218,10 @@ CREATE TABLE `standard` (
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for subcategory
+-- Table structure for subCategory
 -- ----------------------------
-DROP TABLE IF EXISTS `subcategory`;
-CREATE TABLE `subcategory` (
+DROP TABLE IF EXISTS `subCategory`;
+CREATE TABLE `subCategory` (
   `subCategoryId` int(11) NOT NULL AUTO_INCREMENT,
   `categoryId` int(11) DEFAULT NULL,
   `subCategoryName` varchar(45) DEFAULT NULL,
@@ -231,7 +231,7 @@ CREATE TABLE `subcategory` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of subcategory
+-- Records of subCategory
 -- ----------------------------
 
 -- ----------------------------
@@ -257,29 +257,29 @@ CREATE TABLE `user` (
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for userauthority
+-- Table structure for userAuthority
 -- ----------------------------
-DROP TABLE IF EXISTS `userauthority`;
-CREATE TABLE `userauthority` (
+DROP TABLE IF EXISTS `userAuthority`;
+CREATE TABLE `userAuthority` (
   `userGroup` int(11) NOT NULL AUTO_INCREMENT,
   `userAuthority` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`userGroup`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of userauthority
+-- Records of userAuthority
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for usergroup
+-- Table structure for userGroup
 -- ----------------------------
-DROP TABLE IF EXISTS `usergroup`;
-CREATE TABLE `usergroup` (
+DROP TABLE IF EXISTS `userGroup`;
+CREATE TABLE `userGroup` (
   `userId` int(11) NOT NULL AUTO_INCREMENT,
   `userGroup` int(11) DEFAULT NULL,
   PRIMARY KEY (`userId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of usergroup
+-- Records of userGroup
 -- ----------------------------
