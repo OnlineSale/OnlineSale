@@ -1,14 +1,13 @@
 package com.shop.controller;
 
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-
+import com.shop.model.User;
+import com.shop.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.shop.model.User;
-import com.shop.service.UserService;
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * @author chuankun   email:yichuankun@qq.com
@@ -37,5 +36,6 @@ public class UserController {
 		return "ok";
 		}
 	}
+//
 
 }
