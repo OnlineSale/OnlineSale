@@ -3,7 +3,7 @@
 <mapper namespace="com.shop.dao.GoodMapper" >
   <resultMap id="BaseResultMap" type="com.shop.model.Good" >
     <id column="goodId" property="goodid" jdbcType="INTEGER" />
-    <result column="subCategoryId" property="subcategoryid" jdbcType="INTEGER" />
+    <result column="classId" property="classid" jdbcType="INTEGER" />
     <result column="goodName" property="goodname" jdbcType="VARCHAR" />
     <result column="price" property="price" jdbcType="DOUBLE" />
     <result column="stoke" property="stoke" jdbcType="INTEGER" />
@@ -15,10 +15,11 @@
     <result column="goodPoint" property="goodpoint" jdbcType="DOUBLE" />
     <result column="serverPoint" property="serverpoint" jdbcType="DOUBLE" />
     <result column="logisticsPoint" property="logisticspoint" jdbcType="DOUBLE" />
+    <result column="goodImage" property="goodimage" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    goodId, subCategoryId, goodName, price, stoke, goodDesc, brand, goodLable, sales, 
-    clicks, goodPoint, serverPoint, logisticsPoint
+    goodId, classId, goodName, price, stoke, goodDesc, brand, goodLable, sales, clicks, 
+    goodPoint, serverPoint, logisticsPoint, goodImage
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -31,16 +32,16 @@
     where goodId = #{goodid,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.shop.model.Good" >
-    insert into good (goodId, subCategoryId, goodName, 
+    insert into good (goodId, classId, goodName, 
       price, stoke, goodDesc, 
       brand, goodLable, sales, 
       clicks, goodPoint, serverPoint, 
-      logisticsPoint)
-    values (#{goodid,jdbcType=INTEGER}, #{subcategoryid,jdbcType=INTEGER}, #{goodname,jdbcType=VARCHAR}, 
+      logisticsPoint, goodImage)
+    values (#{goodid,jdbcType=INTEGER}, #{classid,jdbcType=INTEGER}, #{goodname,jdbcType=VARCHAR}, 
       #{price,jdbcType=DOUBLE}, #{stoke,jdbcType=INTEGER}, #{gooddesc,jdbcType=VARCHAR}, 
       #{brand,jdbcType=VARCHAR}, #{goodlable,jdbcType=VARCHAR}, #{sales,jdbcType=INTEGER}, 
       #{clicks,jdbcType=INTEGER}, #{goodpoint,jdbcType=DOUBLE}, #{serverpoint,jdbcType=DOUBLE}, 
-      #{logisticspoint,jdbcType=DOUBLE})
+      #{logisticspoint,jdbcType=DOUBLE}, #{goodimage,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.shop.model.Good" >
     insert into good
@@ -48,8 +49,8 @@
       <if test="goodid != null" >
         goodId,
       </if>
-      <if test="subcategoryid != null" >
-        subCategoryId,
+      <if test="classid != null" >
+        classId,
       </if>
       <if test="goodname != null" >
         goodName,
@@ -84,13 +85,16 @@
       <if test="logisticspoint != null" >
         logisticsPoint,
       </if>
+      <if test="goodimage != null" >
+        goodImage,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="goodid != null" >
         #{goodid,jdbcType=INTEGER},
       </if>
-      <if test="subcategoryid != null" >
-        #{subcategoryid,jdbcType=INTEGER},
+      <if test="classid != null" >
+        #{classid,jdbcType=INTEGER},
       </if>
       <if test="goodname != null" >
         #{goodname,jdbcType=VARCHAR},
@@ -125,13 +129,16 @@
       <if test="logisticspoint != null" >
         #{logisticspoint,jdbcType=DOUBLE},
       </if>
+      <if test="goodimage != null" >
+        #{goodimage,jdbcType=VARCHAR},
+      </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.shop.model.Good" >
     update good
     <set >
-      <if test="subcategoryid != null" >
-        subCategoryId = #{subcategoryid,jdbcType=INTEGER},
+      <if test="classid != null" >
+        classId = #{classid,jdbcType=INTEGER},
       </if>
       <if test="goodname != null" >
         goodName = #{goodname,jdbcType=VARCHAR},
@@ -166,12 +173,15 @@
       <if test="logisticspoint != null" >
         logisticsPoint = #{logisticspoint,jdbcType=DOUBLE},
       </if>
+      <if test="goodimage != null" >
+        goodImage = #{goodimage,jdbcType=VARCHAR},
+      </if>
     </set>
     where goodId = #{goodid,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.shop.model.Good" >
     update good
-    set subCategoryId = #{subcategoryid,jdbcType=INTEGER},
+    set classId = #{classid,jdbcType=INTEGER},
       goodName = #{goodname,jdbcType=VARCHAR},
       price = #{price,jdbcType=DOUBLE},
       stoke = #{stoke,jdbcType=INTEGER},
@@ -182,7 +192,8 @@
       clicks = #{clicks,jdbcType=INTEGER},
       goodPoint = #{goodpoint,jdbcType=DOUBLE},
       serverPoint = #{serverpoint,jdbcType=DOUBLE},
-      logisticsPoint = #{logisticspoint,jdbcType=DOUBLE}
+      logisticsPoint = #{logisticspoint,jdbcType=DOUBLE},
+      goodImage = #{goodimage,jdbcType=VARCHAR}
     where goodId = #{goodid,jdbcType=INTEGER}
   </update>
 </mapper>
