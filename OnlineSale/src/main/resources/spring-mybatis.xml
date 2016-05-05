@@ -56,4 +56,5 @@
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 
+	<bean id="authenticationFilter" class="com.shop.authentication.filter.AuthenticationFilter"></bean>
 </beans>  
