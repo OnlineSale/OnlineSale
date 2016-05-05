@@ -8,16 +8,19 @@ import javax.validation.constraints.Pattern;
 public class RegisterInfo {
 
 
-    @Pattern(regexp = "\\*",message = "{Pattern.registerinfo.userName}")
+    @Pattern(regexp = "^[a-zA-Z0-9_@-]{3,15}$",message = "{Pattern.registerinfo.userName}")
     private String userName;
 
-    @Pattern(regexp = "^[-\\da-zA-Z`=\\\\\\[\\];',./~!@#$%^&*()_+|{}:\"<>?]*$")
+    @Pattern(regexp = "^[-\\da-zA-Z`=\\\\\\[\\];',./~!@#$%^&*()_+|{}:\"<>?]*$",message = "{Pattern.registerinfo.passWord}")
     private String passWord;
 
     //验证码
     private String validCode;
 
     private String realValidCode;
+
+    @Pattern(regexp = "^\\d+$",message ="{Pattern.registerinfo.phoneNumber}")
+    private String phoneNumber;
 
     public void setUserName(String userName) {
         this.userName = userName;
@@ -49,5 +52,13 @@ public class RegisterInfo {
 
     public String getRealValidCode() {
         return realValidCode;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 }

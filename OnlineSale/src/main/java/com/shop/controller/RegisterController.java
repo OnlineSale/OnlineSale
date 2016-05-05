@@ -11,7 +11,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by yuan on 16-5-3.
@@ -27,17 +30,25 @@ public class RegisterController {
     @ResponseBody
     public Object handleSignUp(@Valid RegisterInfo registerInfo, BindingResult bindingResult, HttpSession session){
         if(bindingResult.hasErrors()){
-            List<ObjectError> list=bindingResult.getAllErrors();
-            for(ObjectError error:list){
-                String code=error.getCode();
-                String message=error.getDefaultMessage();
-                System.out.println("code: "+code+"----message: "+message);
-            }
-            return null;
+            return getErrorResult(bindingResult);
         }
         String realValidCode=(String)session.getAttribute(KEY_VALID_CODE);
         registerInfo.setRealValidCode(realValidCode);
         return registerService.register(registerInfo);
+    }
+
+    private Object getErrorResult(BindingResult bindingResult){
+        Map<String,Object> errorResult=new HashMap<String, Object>();
+        List<ObjectError> errors=bindingResult.getAllErrors();
+        String errorMessage=null;
+        List<String> errorList=new LinkedList<String>();
+        for(ObjectError error:errors){
+            errorMessage=error.getDefaultMessage();
+            errorList.add(errorMessage);
+        }
+        errorResult.put("errors",errorList);
+        errorResult.put("status","faild");
+        return errorResult;
     }
 
 
