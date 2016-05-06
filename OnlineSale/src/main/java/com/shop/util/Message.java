@@ -22,4 +22,21 @@ public class Message {
 		map.put("data", data);
 		return map;
 	}
+	/**返回成功的结果
+	 * @return
+	 */
+	public static Object getMessage(){
+		Map<String , Object> map = new HashMap<String, Object>();
+		map.put("code", 1);
+		map.put("error", "");
+		map.put("date", "");
+		return map;
+	}
+	public static Object getMessageParmNull(){
+		Map<String , Object> map = new HashMap<String, Object>();
+		map.put("code", 0);
+		map.put("error", "参数为空！");
+		map.put("date", "");
+		return map;
+	}
 }

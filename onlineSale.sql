@@ -1,67 +1,101 @@
-/*
-Navicat MySQL Data Transfer
+CREATE DATABASE  IF NOT EXISTS `onlineSale` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `onlineSale`;
+-- MySQL dump 10.13  Distrib 5.5.49, for debian-linux-gnu (x86_64)
+--
+-- Host: 127.0.0.1    Database: onlineSale
+-- ------------------------------------------------------
+-- Server version	5.5.49-0ubuntu0.14.04.1
 
-Source Server         : mysql
-Source Server Version : 50545
-Source Host           : localhost:3306
-Source Database       : onlineSale
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-Target Server Type    : MYSQL
-Target Server Version : 50545
-File Encoding         : 65001
+--
+-- Table structure for table `carriage`
+--
 
-Date: 2016-05-04 17:04:35
-*/
-
-SET FOREIGN_KEY_CHECKS=0;
-
--- ----------------------------
--- Table structure for carriage
--- ----------------------------
 DROP TABLE IF EXISTS `carriage`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `carriage` (
   `carriageId` int(11) NOT NULL AUTO_INCREMENT,
   `carriageName` varchar(45) DEFAULT NULL,
   `carriagePrice` double DEFAULT NULL,
   PRIMARY KEY (`carriageId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Records of carriage
--- ----------------------------
+--
+-- Dumping data for table `carriage`
+--
 
--- ----------------------------
--- Table structure for category
--- ----------------------------
+LOCK TABLES `carriage` WRITE;
+/*!40000 ALTER TABLE `carriage` DISABLE KEYS */;
+/*!40000 ALTER TABLE `carriage` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `category`
+--
+
 DROP TABLE IF EXISTS `category`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `category` (
   `categoryId` int(11) NOT NULL AUTO_INCREMENT,
   `categoryName` varchar(45) DEFAULT NULL,
+  `createTime` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`categoryId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Records of category
--- ----------------------------
+--
+-- Dumping data for table `category`
+--
 
--- ----------------------------
--- Table structure for collection
--- ----------------------------
+LOCK TABLES `category` WRITE;
+/*!40000 ALTER TABLE `category` DISABLE KEYS */;
+INSERT INTO `category` VALUES (1,'justtest','2016-52-06 10:52:31'),(2,'test1','2016-07-06 12:07:51'),(3,'test2','2016-07-06 12:07:57'),(4,'test3','2016-08-06 12:08:02'),(5,'haha1','2016-39-06 08:39:42'),(6,'haha2','2016-39-06 08:39:59'),(7,'haha3','2016-50-06 08:50:32');
+/*!40000 ALTER TABLE `category` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `collection`
+--
+
 DROP TABLE IF EXISTS `collection`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `collection` (
   `userId` int(11) NOT NULL AUTO_INCREMENT,
   `goodId` int(11) DEFAULT NULL,
   PRIMARY KEY (`userId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Records of collection
--- ----------------------------
+--
+-- Dumping data for table `collection`
+--
 
--- ----------------------------
--- Table structure for comment
--- ----------------------------
+LOCK TABLES `collection` WRITE;
+/*!40000 ALTER TABLE `collection` DISABLE KEYS */;
+/*!40000 ALTER TABLE `collection` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `comment`
+--
+
 DROP TABLE IF EXISTS `comment`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `comment` (
   `commentId` int(11) NOT NULL,
   `goodId` int(11) DEFAULT NULL,
@@ -73,18 +107,27 @@ CREATE TABLE `comment` (
   `logisticsServer` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`commentId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Records of comment
--- ----------------------------
+--
+-- Dumping data for table `comment`
+--
 
--- ----------------------------
--- Table structure for good
--- ----------------------------
+LOCK TABLES `comment` WRITE;
+/*!40000 ALTER TABLE `comment` DISABLE KEYS */;
+/*!40000 ALTER TABLE `comment` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `good`
+--
+
 DROP TABLE IF EXISTS `good`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `good` (
   `goodId` int(11) NOT NULL AUTO_INCREMENT,
-  `subCategoryId` int(11) DEFAULT NULL,
+  `classId` int(11) DEFAULT NULL,
   `goodName` varchar(45) DEFAULT NULL,
   `price` double DEFAULT NULL,
   `stoke` int(11) DEFAULT NULL,
@@ -96,17 +139,29 @@ CREATE TABLE `good` (
   `goodPoint` double DEFAULT NULL,
   `serverPoint` double DEFAULT NULL,
   `logisticsPoint` double DEFAULT NULL,
+  `goodImage` varchar(45) DEFAULT NULL,
+  `goodState` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`goodId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Records of good
--- ----------------------------
+--
+-- Dumping data for table `good`
+--
 
--- ----------------------------
--- Table structure for logistics
--- ----------------------------
+LOCK TABLES `good` WRITE;
+/*!40000 ALTER TABLE `good` DISABLE KEYS */;
+INSERT INTO `good` VALUES (1,2,'test',NULL,123,'',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+/*!40000 ALTER TABLE `good` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `logistics`
+--
+
 DROP TABLE IF EXISTS `logistics`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `logistics` (
   `logisticsId` int(11) NOT NULL AUTO_INCREMENT,
   `userId` int(11) DEFAULT NULL,
@@ -120,15 +175,24 @@ CREATE TABLE `logistics` (
   `logisticsNumber` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`logisticsId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Records of logistics
--- ----------------------------
+--
+-- Dumping data for table `logistics`
+--
 
--- ----------------------------
--- Table structure for order
--- ----------------------------
+LOCK TABLES `logistics` WRITE;
+/*!40000 ALTER TABLE `logistics` DISABLE KEYS */;
+/*!40000 ALTER TABLE `logistics` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `order`
+--
+
 DROP TABLE IF EXISTS `order`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `order` (
   `orderId` int(11) NOT NULL AUTO_INCREMENT,
   `userId` int(11) DEFAULT NULL,
@@ -145,30 +209,48 @@ CREATE TABLE `order` (
   `completeTime` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`orderId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Records of order
--- ----------------------------
+--
+-- Dumping data for table `order`
+--
 
--- ----------------------------
--- Table structure for orderDetail
--- ----------------------------
+LOCK TABLES `order` WRITE;
+/*!40000 ALTER TABLE `order` DISABLE KEYS */;
+/*!40000 ALTER TABLE `order` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `orderDetail`
+--
+
 DROP TABLE IF EXISTS `orderDetail`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `orderDetail` (
   `orderId` int(11) NOT NULL,
   `goodId` int(11) DEFAULT NULL,
   `goodNumber` int(11) DEFAULT NULL,
   PRIMARY KEY (`orderId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Records of orderDetail
--- ----------------------------
+--
+-- Dumping data for table `orderDetail`
+--
 
--- ----------------------------
--- Table structure for shopping
--- ----------------------------
+LOCK TABLES `orderDetail` WRITE;
+/*!40000 ALTER TABLE `orderDetail` DISABLE KEYS */;
+/*!40000 ALTER TABLE `orderDetail` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `shopping`
+--
+
 DROP TABLE IF EXISTS `shopping`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `shopping` (
   `userId` int(11) DEFAULT NULL,
   `goodId` int(11) DEFAULT NULL,
@@ -177,15 +259,24 @@ CREATE TABLE `shopping` (
   `shoppingId` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`shoppingId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Records of shopping
--- ----------------------------
+--
+-- Dumping data for table `shopping`
+--
 
--- ----------------------------
--- Table structure for specification
--- ----------------------------
+LOCK TABLES `shopping` WRITE;
+/*!40000 ALTER TABLE `shopping` DISABLE KEYS */;
+/*!40000 ALTER TABLE `shopping` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `specification`
+--
+
 DROP TABLE IF EXISTS `specification`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `specification` (
   `specificationId` int(11) NOT NULL AUTO_INCREMENT,
   `goodId` int(11) DEFAULT NULL,
@@ -195,15 +286,24 @@ CREATE TABLE `specification` (
   `stoke` int(11) DEFAULT NULL,
   PRIMARY KEY (`specificationId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Records of specification
--- ----------------------------
+--
+-- Dumping data for table `specification`
+--
 
--- ----------------------------
--- Table structure for standard
--- ----------------------------
+LOCK TABLES `specification` WRITE;
+/*!40000 ALTER TABLE `specification` DISABLE KEYS */;
+/*!40000 ALTER TABLE `specification` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `standard`
+--
+
 DROP TABLE IF EXISTS `standard`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `standard` (
   `standardId` int(11) NOT NULL AUTO_INCREMENT,
   `specificationId` int(11) DEFAULT NULL,
@@ -212,15 +312,24 @@ CREATE TABLE `standard` (
   `stoke` int(11) DEFAULT NULL,
   PRIMARY KEY (`standardId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Records of standard
--- ----------------------------
+--
+-- Dumping data for table `standard`
+--
 
--- ----------------------------
--- Table structure for subCategory
--- ----------------------------
+LOCK TABLES `standard` WRITE;
+/*!40000 ALTER TABLE `standard` DISABLE KEYS */;
+/*!40000 ALTER TABLE `standard` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `subCategory`
+--
+
 DROP TABLE IF EXISTS `subCategory`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `subCategory` (
   `subCategoryId` int(11) NOT NULL AUTO_INCREMENT,
   `categoryId` int(11) DEFAULT NULL,
@@ -228,16 +337,26 @@ CREATE TABLE `subCategory` (
   `subCategoryDesc` varchar(45) DEFAULT NULL,
   `createTime` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`subCategoryId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Records of subCategory
--- ----------------------------
+--
+-- Dumping data for table `subCategory`
+--
 
--- ----------------------------
--- Table structure for user
--- ----------------------------
+LOCK TABLES `subCategory` WRITE;
+/*!40000 ALTER TABLE `subCategory` DISABLE KEYS */;
+INSERT INTO `subCategory` VALUES (1,NULL,'test','','2016-08-06 04:08:52'),(2,1,'test1test','nihao','2016-15-06 04:15:58'),(3,1,'test2test','nihao','2016-17-06 04:17:21'),(4,1,'test3test','nihao','2016-17-06 04:17:24');
+/*!40000 ALTER TABLE `subCategory` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user`
+--
+
 DROP TABLE IF EXISTS `user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `user` (
   `userId` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(45) DEFAULT NULL,
@@ -251,35 +370,70 @@ CREATE TABLE `user` (
   `userImage` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`userId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Records of user
--- ----------------------------
+--
+-- Dumping data for table `user`
+--
 
--- ----------------------------
--- Table structure for userAuthority
--- ----------------------------
+LOCK TABLES `user` WRITE;
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `userAuthority`
+--
+
 DROP TABLE IF EXISTS `userAuthority`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `userAuthority` (
   `userGroup` int(11) NOT NULL AUTO_INCREMENT,
   `userAuthority` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`userGroup`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Records of userAuthority
--- ----------------------------
+--
+-- Dumping data for table `userAuthority`
+--
 
--- ----------------------------
--- Table structure for userGroup
--- ----------------------------
+LOCK TABLES `userAuthority` WRITE;
+/*!40000 ALTER TABLE `userAuthority` DISABLE KEYS */;
+/*!40000 ALTER TABLE `userAuthority` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `userGroup`
+--
+
 DROP TABLE IF EXISTS `userGroup`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `userGroup` (
   `userId` int(11) NOT NULL AUTO_INCREMENT,
   `userGroup` int(11) DEFAULT NULL,
   PRIMARY KEY (`userId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- ----------------------------
--- Records of userGroup
--- ----------------------------
+--
+-- Dumping data for table `userGroup`
+--
+
+LOCK TABLES `userGroup` WRITE;
+/*!40000 ALTER TABLE `userGroup` DISABLE KEYS */;
+/*!40000 ALTER TABLE `userGroup` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2016-05-06 22:43:44

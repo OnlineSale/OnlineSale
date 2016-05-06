@@ -5,6 +5,8 @@ public class Category {
 
     private String categoryname;
 
+    private String createtime;
+
     public Integer getCategoryid() {
         return categoryid;
     }
@@ -19,5 +21,13 @@ public class Category {
 
     public void setCategoryname(String categoryname) {
         this.categoryname = categoryname == null ? null : categoryname.trim();
+    }
+
+    public String getCreatetime() {
+        return createtime;
+    }
+
+    public void setCreatetime(String createtime) {
+        this.createtime = createtime == null ? null : createtime.trim();
     }
 }

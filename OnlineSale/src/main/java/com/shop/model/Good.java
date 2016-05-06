@@ -29,6 +29,8 @@ public class Good {
 
     private String goodimage;
 
+    private String goodstate;
+
     public Integer getGoodid() {
         return goodid;
     }
@@ -139,5 +141,13 @@ public class Good {
 
     public void setGoodimage(String goodimage) {
         this.goodimage = goodimage == null ? null : goodimage.trim();
+    }
+
+    public String getGoodstate() {
+        return goodstate;
+    }
+
+    public void setGoodstate(String goodstate) {
+        this.goodstate = goodstate == null ? null : goodstate.trim();
     }
 }
