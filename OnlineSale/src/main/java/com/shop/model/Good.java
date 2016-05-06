@@ -3,7 +3,7 @@ package com.shop.model;
 public class Good {
     private Integer goodid;
 
-    private Integer subcategoryid;
+    private Integer classid;
 
     private String goodname;
 
@@ -27,6 +27,10 @@ public class Good {
 
     private Double logisticspoint;
 
+    private String goodimage;
+
+    private String goodstate;
+
     public Integer getGoodid() {
         return goodid;
     }
@@ -35,12 +39,12 @@ public class Good {
         this.goodid = goodid;
     }
 
-    public Integer getSubcategoryid() {
-        return subcategoryid;
+    public Integer getClassid() {
+        return classid;
     }
 
-    public void setSubcategoryid(Integer subcategoryid) {
-        this.subcategoryid = subcategoryid;
+    public void setClassid(Integer classid) {
+        this.classid = classid;
     }
 
     public String getGoodname() {
@@ -129,5 +133,21 @@ public class Good {
 
     public void setLogisticspoint(Double logisticspoint) {
         this.logisticspoint = logisticspoint;
+    }
+
+    public String getGoodimage() {
+        return goodimage;
+    }
+
+    public void setGoodimage(String goodimage) {
+        this.goodimage = goodimage == null ? null : goodimage.trim();
+    }
+
+    public String getGoodstate() {
+        return goodstate;
+    }
+
+    public void setGoodstate(String goodstate) {
+        this.goodstate = goodstate == null ? null : goodstate.trim();
     }
 }

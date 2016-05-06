@@ -11,24 +11,39 @@
   <sql id="Base_Column_List" >
     subCategoryId, categoryId, subCategoryName, subCategoryDesc, createTime
   </sql>
+  
+   <select id="selectByName" resultMap="BaseResultMap">
+   select * 
+   from subCategory
+   where subCategoryName=#{name}
+   </select>
+   
+   <select id="selectByCategoryId" resultMap="BaseResultMap">
+   select * 
+   from subCategory
+   where categoryId=#{id}
+   </select>
+  
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from subcategory
+    from subCategory
     where subCategoryId = #{subcategoryid,jdbcType=INTEGER}
   </select>
+  
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from subcategory
+    delete from subCategory
     where subCategoryId = #{subcategoryid,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.shop.model.SubCategory" >
-    insert into subcategory (subCategoryId, categoryId, subCategoryName, 
+    insert into subCategory (subCategoryId, categoryId, subCategoryName, 
       subCategoryDesc, createTime)
     values (#{subcategoryid,jdbcType=INTEGER}, #{categoryid,jdbcType=INTEGER}, #{subcategoryname,jdbcType=VARCHAR}, 
       #{subcategorydesc,jdbcType=VARCHAR}, #{createtime,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.shop.model.SubCategory" >
-    insert into subcategory
+    insert into subCategory
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="subcategoryid != null" >
         subCategoryId,
@@ -65,7 +80,7 @@
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.shop.model.SubCategory" >
-    update subcategory
+    update subCategory
     <set >
       <if test="categoryid != null" >
         categoryId = #{categoryid,jdbcType=INTEGER},
@@ -83,7 +98,7 @@
     where subCategoryId = #{subcategoryid,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.shop.model.SubCategory" >
-    update subcategory
+    update subCategory
     set categoryId = #{categoryid,jdbcType=INTEGER},
       subCategoryName = #{subcategoryname,jdbcType=VARCHAR},
       subCategoryDesc = #{subcategorydesc,jdbcType=VARCHAR},

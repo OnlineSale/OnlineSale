@@ -1,5 +1,10 @@
 package com.shop.dao;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
+import com.shop.model.Category;
 import com.shop.model.SubCategory;
 
 public interface SubCategoryMapper {
@@ -14,4 +19,7 @@ public interface SubCategoryMapper {
     int updateByPrimaryKeySelective(SubCategory record);
 
     int updateByPrimaryKey(SubCategory record);
+    //补充
+    SubCategory selectByName(@Param("name")String name);
+    List selectByCategoryId(@Param("id") Integer id);
 }
