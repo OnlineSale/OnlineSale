@@ -15,13 +15,13 @@ import java.util.Map;
 @Service
 public class RegisterServiceImpl implements RegisterService {
 
-    private static final String KEY_RESULT_STATE="resultState";
+    private static final String KEY_RESULT_STATE="status";
     private static final String STATE_SUCCESS="success";
-    private static final String STATE_FAILD="faild";
+    private static final String STATE_FAILD="failed";
 
-    private static final String KEY_ERROR_INFO="errorInfo";
-    private static final String ERROR_DUPLICATE_USER_NAME="已经存在重复的用户名";
-    private static final String ERROR_VALID_CODE="验证码错误";
+    private static final String KEY_ERROR_INFO="errors";
+    private static final String[] ERROR_DUPLICATE_USER_NAME={"已经存在重复的用户名"};
+    private static final String[] ERROR_VALID_CODE={"验证码错误"};
     @Resource
     UserInfoDao userInfoDao;
 
@@ -44,6 +44,7 @@ public class RegisterServiceImpl implements RegisterService {
         }
         userInfoDao.addNewUser(registerInfo);
         result.put(KEY_RESULT_STATE,STATE_SUCCESS);
+        result.put(KEY_ERROR_INFO,null);
         return result;
     }
 }

@@ -1,5 +1,6 @@
 package com.shop.model;
 
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 /**
@@ -7,18 +8,21 @@ import javax.validation.constraints.Pattern;
  */
 public class RegisterInfo {
 
-
+    @NotNull(message = "{NotNull.registerinfo.userName}")
     @Pattern(regexp = "^[a-zA-Z0-9_@-]{3,15}$",message = "{Pattern.registerinfo.userName}")
     private String userName;
 
+    @NotNull(message = "{NotNull.registerinfo.passWord}")
     @Pattern(regexp = "^[-\\da-zA-Z`=\\\\\\[\\];',./~!@#$%^&*()_+|{}:\"<>?]*$",message = "{Pattern.registerinfo.passWord}")
     private String passWord;
 
     //验证码
+    @NotNull(message = "{NotNull.register.validCode}")
     private String validCode;
 
     private String realValidCode;
 
+    @NotNull(message="{NotNull.register.phoneNumber}")
     @Pattern(regexp = "^\\d+$",message ="{Pattern.registerinfo.phoneNumber}")
     private String phoneNumber;
 

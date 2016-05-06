@@ -31,7 +31,7 @@ public class RegisterController {
     public static final String KEY_ERRORS="errors";
     public static final String STATUS_SUCCESS="success";
     public static final String STATUS_FAILED="failed";
-    public static final String ERRORS_AUTHENTICATION="authentication failed";
+    public static final String[] ERRORS_AUTHENTICATION={"authentication failed"};
 
     @Resource
     RegisterService registerService;
@@ -53,23 +53,14 @@ public class RegisterController {
         return registerService.register(registerInfo);
     }
 
-    private Object getErrorResult(BindingResult bindingResult){
-        Map<String,Object> errorResult=new HashMap<String, Object>();
-        List<ObjectError> errors=bindingResult.getAllErrors();
-        String errorMessage=null;
-        List<String> errorList=new LinkedList<String>();
-        for(ObjectError error:errors){
-            errorMessage=error.getDefaultMessage();
-            errorList.add(errorMessage);
-        }
-        errorResult.put(KEY_ERRORS,errorList);
-        errorResult.put(KEY_STATUS,STATUS_FAILED);
-        return errorResult;
-    }
+
 
     @RequestMapping("/login")
     @ResponseBody
     public Object login(@Valid LoginInfo loginInfo, BindingResult bindingResult, HttpSession session){
+        if(bindingResult.hasErrors()){
+            return getErrorResult(bindingResult);
+        }
         Map<String,Object> result=new HashMap<String, Object>();
         UserInfo userInfo=logInOutService.login(loginInfo);
         if(!authenticationService.authenticateForLogin(userInfo,session)){
@@ -97,6 +88,20 @@ public class RegisterController {
         result.put(KEY_ERRORS,ERRORS_AUTHENTICATION);
         //result.put(KEY_RETURN_URL,RETURN_URL);
         return result;
+    }
+
+    private Object getErrorResult(BindingResult bindingResult){
+        Map<String,Object> errorResult=new HashMap<String, Object>();
+        List<ObjectError> errors=bindingResult.getAllErrors();
+        String errorMessage=null;
+        List<String> errorList=new LinkedList<String>();
+        for(ObjectError error:errors){
+            errorMessage=error.getDefaultMessage();
+            errorList.add(errorMessage);
+        }
+        errorResult.put(KEY_ERRORS,errorList);
+        errorResult.put(KEY_STATUS,STATUS_FAILED);
+        return errorResult;
     }
 
 
