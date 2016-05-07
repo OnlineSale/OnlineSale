@@ -4,10 +4,23 @@
   <resultMap id="BaseResultMap" type="com.shop.model.Category" >
     <id column="categoryId" property="categoryid" jdbcType="INTEGER" />
     <result column="categoryName" property="categoryname" jdbcType="VARCHAR" />
+    <result column="createTime" property="createtime" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    categoryId, categoryName
+    categoryId, categoryName, createTime
   </sql>
+  
+  <!-- 补充 -->
+  <select id="selectByName" resultMap="BaseResultMap">
+  select * 
+  from category
+  where categoryName=#{categoryName}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+  select * 
+  from subCategory
+  </select>
+  
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
@@ -19,8 +32,10 @@
     where categoryId = #{categoryid,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.shop.model.Category" >
-    insert into category (categoryId, categoryName)
-    values (#{categoryid,jdbcType=INTEGER}, #{categoryname,jdbcType=VARCHAR})
+    insert into category (categoryId, categoryName, createTime
+      )
+    values (#{categoryid,jdbcType=INTEGER}, #{categoryname,jdbcType=VARCHAR}, #{createtime,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.shop.model.Category" >
     insert into category
@@ -31,6 +46,9 @@
       <if test="categoryname != null" >
         categoryName,
       </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="categoryid != null" >
@@ -38,6 +56,9 @@
       </if>
       <if test="categoryname != null" >
         #{categoryname,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -47,12 +68,16 @@
       <if test="categoryname != null" >
         categoryName = #{categoryname,jdbcType=VARCHAR},
       </if>
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=VARCHAR},
+      </if>
     </set>
     where categoryId = #{categoryid,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.shop.model.Category" >
     update category
-    set categoryName = #{categoryname,jdbcType=VARCHAR}
+    set categoryName = #{categoryname,jdbcType=VARCHAR},
+      createTime = #{createtime,jdbcType=VARCHAR}
     where categoryId = #{categoryid,jdbcType=INTEGER}
   </update>
 </mapper>
