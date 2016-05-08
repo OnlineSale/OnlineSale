@@ -22,13 +22,15 @@ public class GoodController {
 	
 	@Resource
 	private GoodService goodService;
+	
 	@RequestMapping("/addGood")
 	@ResponseBody
 	public Object addGood(HttpServletRequest request){
 		String id = request.getParameter("subCategoryId");
 		String goodName =request.getParameter("goodName");
 		String stoke = request.getParameter("stoke");
-		if(id==null||goodName==null||stoke==null){
+		String goodState = request.getParameter("goodState");
+		if(id==null||goodName==null||stoke==null||goodState==null){
 			return Message.getMessageParmNull();
 		}
 		String goodDesc = request.getParameter("goodDesc");
@@ -52,6 +54,7 @@ public class GoodController {
 		good.setGoodlable(goodLable);
 		good.setStoke(Integer.valueOf(stoke));
 		good.setGoodname(goodName);
+		good.setGoodstate(goodState);
 		goodService.addGood(good);
 		return Message.getMessage();
 	}
