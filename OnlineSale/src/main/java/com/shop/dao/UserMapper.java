@@ -3,13 +3,13 @@ package com.shop.dao;
 import com.shop.model.User;
 
 public interface UserMapper {
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(Integer userid);
 
     int insert(User record);
 
     int insertSelective(User record);
 
-    User selectByPrimaryKey(Integer id);
+    User selectByPrimaryKey(Integer userid);
 
     int updateByPrimaryKeySelective(User record);
 
