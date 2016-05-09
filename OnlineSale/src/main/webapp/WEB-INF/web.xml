@@ -21,6 +21,15 @@
         <filter-name>encodingFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
+    <!-- 常见异常处理器 -->
+   <filter>
+   <filter-name>exceptionHanderFilter</filter-name>
+   <filter-class>com.shop.filter.ExceptionHandlerFilter</filter-class>
+   </filter>
+   <filter-mapping>
+   <filter-name>exceptionHanderFilter</filter-name>
+   <url-pattern>/*</url-pattern>
+   </filter-mapping>
     <!-- Spring监听器 -->
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>

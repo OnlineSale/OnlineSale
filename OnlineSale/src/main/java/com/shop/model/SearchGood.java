@@ -38,7 +38,7 @@ public class SearchGood {
     public void setBrand(String brand){this.brand=brand;}
 
     public String getGoodImage(){return goodImage;}
-    public void  setGoodImage(String goodImage){this.goodImage=goodImage}
+    public void  setGoodImage(String goodImage){this.goodImage=goodImage;}
 
     public Integer getGoodPoint(){return goodPoint;}
     public void setGoodPoint(Integer goodPoint){

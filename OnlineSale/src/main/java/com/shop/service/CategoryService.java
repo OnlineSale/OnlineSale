@@ -8,7 +8,7 @@ public interface CategoryService {
 
 	public int addCategory(Category record);
 	public int updateCategory(Category record);
-	public int deleteCateGory(Category record);
+	public int deleteCateGory(Integer id);
 	public Category findByName(String categoryName);
 	public List findAll();
 }

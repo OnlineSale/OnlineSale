@@ -10,4 +10,5 @@ public interface SubCategoryService {
 	public void updateSubCategory(SubCategory record);
 	public  SubCategory findByName(String name);
 	public List findByCategory(Integer id);
+	public void deleteSubCategory(Integer id);
 }
