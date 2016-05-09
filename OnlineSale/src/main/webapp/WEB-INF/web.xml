@@ -49,11 +49,11 @@
             <param-name>excludePatterns</param-name>
             <param-value>/register/authenticateFailed,/register/signup,/register/login</param-value>
         </init-param>
-    </filter>
+    </filter>-->
     <filter-mapping>
         <filter-name>authenticationFilter</filter-name>
         <url-pattern>/*</url-pattern>
-    </filter-mapping>-->
+    </filter-mapping>
 
     <!-- Spring监听器 -->
     <listener>
