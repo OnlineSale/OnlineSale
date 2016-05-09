@@ -32,7 +32,8 @@ public class RegisterController {
     public static final String KEY_STATUS="status";
     public static final String KEY_ERRORS="errors";
     public static final String STATUS_SUCCESS="success";
-    public static final String STATUS_FAILED="failed";
+    public static final String STATUS_FAILED="fail";
+    public static final String STATUS_AUTHENTICATION_FAIL="authenticationFail";
     public static final String[] ERRORS_AUTHENTICATION={"authentication failed"};
 
     @Resource
@@ -86,7 +87,7 @@ public class RegisterController {
     @ResponseBody
     public Object redirect(){
         Map<String,Object> result=new HashMap<String, Object>();
-        result.put(KEY_STATUS,STATUS_FAILED);
+        result.put(KEY_STATUS,STATUS_AUTHENTICATION_FAIL);
         result.put(KEY_ERRORS,ERRORS_AUTHENTICATION);
         //result.put(KEY_RETURN_URL,RETURN_URL);
         return result;
