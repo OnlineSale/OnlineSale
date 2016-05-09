@@ -17,15 +17,15 @@ public class SplitWrods {
      * @retrun 返回一个包含名词的对象数组
      */
 
-    public static Object[] DivideSentenceIntoNoun(String sentence){
-        List<String> keywords=new ArrayList<~>();
-        List<Term> parse=ToAnalysis.parse(sentence);
-        for(Term term:parse){
-            if(term.getNatureStr().equals("n")||term.getNatureStr().equals("en")){
-                s=term.getName();
-                keywords.add(s);
-            }
-            return keywords.toArray();
-        }
-    }
+//    public static Object[] DivideSentenceIntoNoun(String sentence){
+//        List<String> keywords=new ArrayList<~>();
+//        List<Term> parse=ToAnalysis.parse(sentence);
+//        for(Term term:parse){
+//            if(term.getNatureStr().equals("n")||term.getNatureStr().equals("en")){
+//                s=term.getName();
+//                keywords.add(s);
+//            }
+//            return keywords.toArray();
+//        }
+//    }
 }

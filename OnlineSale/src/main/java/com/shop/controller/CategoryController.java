@@ -79,4 +79,17 @@ public class CategoryController {
 		return Message.getMessage(1, "", list);
 	}
 	
+	
+	@RequestMapping("/deleteCategory")
+	@ResponseBody
+	public Object deleteCategory(String categoryId){
+		System.out.print(">>>>>>>>>>>what");
+//		String categoryId = request.getParameter("categoryId");
+		if(categoryId==null){
+			return Message.getMessageParmNull();
+		}
+		categoryService.deleteCateGory(Integer.valueOf(categoryId));
+		return Message.getMessage();
+	}
+	
 }

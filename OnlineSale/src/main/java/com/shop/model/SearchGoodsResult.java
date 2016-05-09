@@ -12,13 +12,13 @@ public class SearchGoodsResult {
      * "code":2 表示查询结果为空
      */
     int code=2;
-    List<SearchGoodsJson> goodResult=null;
+    List<SearchGoodsResult> goodResult=null;
 
     public int getCode(){return code;}
     public void setCode(int code){this.code=code;}
 
-    public List<SearchGoodsJson> getGoodResult(){return goodResult;}
-    public void setGoodResult(List<SearchGoodsJson> goodResult){
-        this.goodResult=goodResult;
-    }
+//    public List<SearchGoodsJson> getGoodResult(){return goodResult;}
+//    public void setGoodResult(List<SearchGoodsJson> goodResult){
+//        this.goodResult=goodResult;
+//    }
 }

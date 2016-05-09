@@ -1,5 +1,9 @@
 package com.shop.dao;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
 import com.shop.model.Good;
 
 public interface GoodMapper {
@@ -14,4 +18,8 @@ public interface GoodMapper {
     int updateByPrimaryKeySelective(Good record);
 
     int updateByPrimaryKey(Good record);
+    
+    //补充
+    List selectBySubCategoryId(@Param("subCategoryId") Integer subCategoryId);
+    
 }

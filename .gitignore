@@ -4,5 +4,5 @@ target/.project
 .classpath
 *.iml
 target/OnlineSale.iml
-.idea/
+OnlineSale/.idea
 doc/.~lock.数据库文档.docx#

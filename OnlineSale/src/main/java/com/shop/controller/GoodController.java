@@ -3,6 +3,7 @@ package com.shop.controller;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import org.omg.CORBA.OBJ_ADAPTER;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -57,6 +58,17 @@ public class GoodController {
 		good.setGoodstate(goodState);
 		goodService.addGood(good);
 		return Message.getMessage();
+	}
+	@RequestMapping("/deleteGood")
+	@ResponseBody
+	public Object deleteGood(HttpServletRequest request){
+		String goodId = request.getParameter("goodId");
+		if(goodId == null){
+			return Message.getMessageParmNull();
+		}
+		goodService.deleteGood(Integer.valueOf(goodId));
+		return Message.getMessage();
+
 	}
 
 }

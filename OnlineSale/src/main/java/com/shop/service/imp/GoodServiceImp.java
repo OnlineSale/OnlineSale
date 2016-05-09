@@ -33,7 +33,7 @@ public class GoodServiceImp implements GoodService{
 
 	public void deleteGood(Integer id) {
 		// TODO Auto-generated method stub
-		
+		goodMapper.deleteByPrimaryKey(id);
 	}
 
 	public List findBySubcategoryId(Integer subCategoryId) {

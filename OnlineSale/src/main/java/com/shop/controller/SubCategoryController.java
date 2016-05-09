@@ -91,4 +91,15 @@ public class SubCategoryController {
 		
 		return Message.getMessage(1, "", list);
 	}
+	@RequestMapping("/deleteSubCategory")
+	@ResponseBody
+	public Object deleteSubCategory(String subCategoryId){
+		if(subCategoryId==null){
+			return Message.getMessageParmNull();
+		}
+		else {
+			subCategoryService.deleteSubCategory(Integer.valueOf(subCategoryId));
+		}
+		return Message.getMessage();
+	}
 }

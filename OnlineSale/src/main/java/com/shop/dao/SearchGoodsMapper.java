@@ -9,6 +9,6 @@ import java.util.List;
  * Created by wqlin on 16-5-7.
  */
 public interface SearchGoodsMapper {
-    public List<SearchGood> selectByKeyWordInTitle(@Param("keywords") Object[] keywords,
+    public List<SearchGood> selectByKeyWordInTitle(@Param("keywords") Object[] keywords);
 
 }

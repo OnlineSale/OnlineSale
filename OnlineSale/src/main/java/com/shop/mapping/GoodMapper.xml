@@ -22,6 +22,14 @@
     goodId, classId, goodName, price, stoke, goodDesc, brand, goodLable, sales, clicks, 
     goodPoint, serverPoint, logisticsPoint, goodImage, goodState
   </sql>
+  <!-- 补充 -->
+  <select id="selectBySubCategoryId" resultMap="BaseResultMap">
+  select  * 
+  from good
+  where classId=#{subCategoryId}
+  </select>
+  
+  
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />

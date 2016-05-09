@@ -8,7 +8,9 @@ import org.springframework.stereotype.Service;
 
 import com.shop.dao.CategoryMapper;
 import com.shop.model.Category;
+import com.shop.model.SubCategory;
 import com.shop.service.CategoryService;
+import com.shop.service.SubCategoryService;
 
 /**
  * 商品大类的实现
@@ -22,6 +24,8 @@ public class CategoryServiceImp implements CategoryService{
 	
 	@Resource
 	private CategoryMapper categoryMapper;
+	@Resource
+	private SubCategoryService subCategoryService;
 
 	public int addCategory(Category record) {
 		// TODO Auto-generated method stub
@@ -34,8 +38,18 @@ public class CategoryServiceImp implements CategoryService{
 		return categoryMapper.updateByPrimaryKey(record);
 	}
 
-	public int deleteCateGory(Category record) {
+	/* 
+	 * 这样可能会造成系统资源较大消耗，后期可以考虑优化删除
+	 * (non-Javadoc)
+	 * @see com.shop.service.CategoryService#deleteCateGory(java.lang.Integer)
+	 */
+	public int deleteCateGory(Integer id) {
 		// TODO Auto-generated method stub
+		categoryMapper.deleteByPrimaryKey(id);
+		List<SubCategory>  list  = subCategoryService.findByCategory(id);
+		for(SubCategory record:list ){
+			subCategoryService.deleteSubCategory(record.getSubcategoryid());
+		}
 		return 0;
 	}
 
