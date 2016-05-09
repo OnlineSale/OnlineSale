@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.HashMap;
@@ -62,7 +64,7 @@ public class RegisterController {
             return getErrorResult(bindingResult);
         }
         Map<String,Object> result=new HashMap<String, Object>();
-        UserInfo userInfo=logInOutService.login(loginInfo);
+        UserInfo userInfo=logInOutService.login(loginInfo,session);
         if(!authenticationService.authenticateForLogin(userInfo,session)){
             result.put(KEY_STATUS,STATUS_FAILED);
             return result;
@@ -104,5 +106,9 @@ public class RegisterController {
         return errorResult;
     }
 
+    @RequestMapping("/getNewValidCode")
+    public void getNewValidCode(HttpSession session, HttpServletRequest request, HttpServletResponse response){
+        logInOutService.generateNewValidCode(request,response,session);
+    }
 
 }
