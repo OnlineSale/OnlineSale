@@ -28,13 +28,13 @@ public class RegisterServiceImpl implements RegisterService {
     public Object register(RegisterInfo registerInfo) {
         Map<String,Object> result=new HashMap<String, Object>();
         //判断验证码是否正确
-        String realValidCode=registerInfo.getRealValidCode();
+        /*String realValidCode=registerInfo.getRealValidCode();
         String checkedValidCode=registerInfo.getValidCode();
         if(false&&!checkedValidCode.equals(realValidCode)){
             result.put(KEY_RESULT_STATE,STATE_FAILD);
             result.put(KEY_ERROR_INFO,ERROR_VALID_CODE);
             return result;
-        }
+        }*/
         //判断数据库是否已经存在重复的用户名
         int sum=userInfoDao.getSumOfSameUserName(registerInfo.getUserName());
         if(sum>0){
