@@ -17,7 +17,7 @@ public class RegisterInfo {
     private String passWord;
 
     //验证码
-    @NotNull(message = "{NotNull.register.validCode}")
+    //@NotNull(message = "{NotNull.register.validCode}")
     private String validCode;
 
     private String realValidCode;
