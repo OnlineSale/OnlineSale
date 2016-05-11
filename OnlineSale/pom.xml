@@ -8,7 +8,7 @@
   <name>OnlineSale Maven Webapp</name>
   <url>http://maven.apache.org</url>
    <build>
-        <finalName>WaKouBei</finalName>
+        <finalName>OnlieSale</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>

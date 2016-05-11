@@ -62,7 +62,7 @@ CREATE TABLE `category` (
 
 LOCK TABLES `category` WRITE;
 /*!40000 ALTER TABLE `category` DISABLE KEYS */;
-INSERT INTO `category` VALUES (1,'justtest','2016-52-06 10:52:31'),(2,'test1','2016-07-06 12:07:51'),(3,'test2','2016-07-06 12:07:57'),(4,'test3','2016-08-06 12:08:02'),(5,'haha1','2016-39-06 08:39:42'),(6,'haha2','2016-39-06 08:39:59'),(7,'haha3','2016-50-06 08:50:32');
+INSERT INTO `category` VALUES (2,'test1','2016-07-06 12:07:51'),(3,'test2','2016-07-06 12:07:57'),(4,'test3','2016-08-06 12:08:02'),(5,'haha1','2016-39-06 08:39:42'),(6,'haha2','2016-39-06 08:39:59'),(7,'haha3','2016-50-06 08:50:32');
 /*!40000 ALTER TABLE `category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -142,7 +142,7 @@ CREATE TABLE `good` (
   `goodImage` varchar(45) DEFAULT NULL,
   `goodState` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`goodId`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -151,7 +151,6 @@ CREATE TABLE `good` (
 
 LOCK TABLES `good` WRITE;
 /*!40000 ALTER TABLE `good` DISABLE KEYS */;
-INSERT INTO `good` VALUES (1,2,'test',NULL,123,'',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `good` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -337,7 +336,7 @@ CREATE TABLE `subCategory` (
   `subCategoryDesc` varchar(45) DEFAULT NULL,
   `createTime` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`subCategoryId`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -346,7 +345,7 @@ CREATE TABLE `subCategory` (
 
 LOCK TABLES `subCategory` WRITE;
 /*!40000 ALTER TABLE `subCategory` DISABLE KEYS */;
-INSERT INTO `subCategory` VALUES (1,NULL,'test','','2016-08-06 04:08:52'),(2,1,'test1test','nihao','2016-15-06 04:15:58'),(3,1,'test2test','nihao','2016-17-06 04:17:21'),(4,1,'test3test','nihao','2016-17-06 04:17:24');
+INSERT INTO `subCategory` VALUES (1,NULL,'test','','2016-08-06 04:08:52');
 /*!40000 ALTER TABLE `subCategory` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -436,4 +435,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-05-06 22:43:44
+-- Dump completed on 2016-05-10  9:37:15
