@@ -1,5 +1,9 @@
 package com.shop.dao;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
 import com.shop.model.Standard;
 
 public interface StandardMapper {
@@ -14,4 +18,7 @@ public interface StandardMapper {
     int updateByPrimaryKeySelective(Standard record);
 
     int updateByPrimaryKey(Standard record);
+    
+    //补充
+    List selectBySpecificationId(@Param("specificationId") Integer specificationId);
 }
