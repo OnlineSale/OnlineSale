@@ -53,7 +53,7 @@ CREATE TABLE `category` (
   `categoryName` varchar(45) DEFAULT NULL,
   `createTime` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`categoryId`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -62,7 +62,7 @@ CREATE TABLE `category` (
 
 LOCK TABLES `category` WRITE;
 /*!40000 ALTER TABLE `category` DISABLE KEYS */;
-INSERT INTO `category` VALUES (2,'test1','2016-07-06 12:07:51'),(3,'test2','2016-07-06 12:07:57'),(4,'test3','2016-08-06 12:08:02'),(5,'haha1','2016-39-06 08:39:42'),(6,'haha2','2016-39-06 08:39:59'),(7,'haha3','2016-50-06 08:50:32');
+INSERT INTO `category` VALUES (2,'test1','2016-07-06 12:07:51'),(3,'test2','2016-07-06 12:07:57'),(4,'test3','2016-08-06 12:08:02'),(5,'haha1','2016-39-06 08:39:42'),(6,'haha2','2016-39-06 08:39:59'),(7,'haha3','2016-50-06 08:50:32'),(8,'test','2016-55-10 09:55:31');
 /*!40000 ALTER TABLE `category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -435,4 +435,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-05-10  9:37:15
+-- Dump completed on 2016-05-11 16:20:52
