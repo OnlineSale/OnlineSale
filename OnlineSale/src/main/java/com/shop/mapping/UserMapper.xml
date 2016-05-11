@@ -13,6 +13,7 @@
     <result column="memberLevel" property="memberlevel" jdbcType="INTEGER" />
     <result column="userImage" property="userimage" jdbcType="VARCHAR" />
   </resultMap>
+
   <sql id="Base_Column_List" >
     userId, username, password, payPassword, registTime, idcard, phone, integralId, memberLevel, 
     userImage
@@ -137,6 +138,7 @@
     </set>
     where userId = #{userid,jdbcType=INTEGER}
   </update>
+
   <update id="updateByPrimaryKey" parameterType="com.shop.model.User" >
     update user
     set username = #{username,jdbcType=VARCHAR},
@@ -150,4 +152,30 @@
       userImage = #{userimage,jdbcType=VARCHAR}
     where userId = #{userid,jdbcType=INTEGER}
   </update>
+
+
+  <select id="login" parameterType="com.shop.model.User" resultMap="UserInfoResultMap">
+    select * from user where username =#{username} and password =#{password}
+  </select>
+
+  <resultMap id="UserInfoResultMap" type="com.shop.model.User" >
+    <id column="userId" property="userid" jdbcType="INTEGER" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="registTime" property="registtime" jdbcType="VARCHAR" />
+    <result column="idcard" property="idcard" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="INTEGER" />
+    <result column="integralId" property="integralid" jdbcType="INTEGER" />
+    <result column="memberLevel" property="memberlevel" jdbcType="INTEGER" />
+    <result column="userImage" property="userimage" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="UserInfo_Column_List" >
+    userId, username, registTime, idcard, phone, integralId, memberLevel,
+    userImage
+  </sql>
+  <select id="findUserInfoById" resultMap="UserInfoResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="UserInfo_Column_List" />
+    from user
+    where userId = #{userid,jdbcType=INTEGER}
+  </select>
 </mapper>

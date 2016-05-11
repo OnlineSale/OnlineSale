@@ -9,4 +9,12 @@
     <insert id="addNewUser" parameterType="com.shop.model.RegisterInfo">
       INSERT INTO `user` (`username`,`password`,`registTime`) VALUE (#{userName},#{passWord},now())
     </insert>
+
+    <resultMap id="userInfo" type="com.shop.model.UserInfo">
+        <id column="username" property="userName"/>
+        <result column="userId" property="userId"/>
+    </resultMap>
+    <select id="getUserInfo" resultMap="userInfo">
+        SELECT `username`,`userId` FROM `user` WHERE `user`.`username`=#{userName} AND `user`.`password`=#{passWord}
+    </select>
 </mapper>

@@ -22,16 +22,39 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
     <!-- 常见异常处理器 -->
-  <!--  现在先注释掉，否则看不到错误信息
-  <filter>
-   <filter-name>exceptionHanderFilter</filter-name>
-   <filter-class>com.shop.filter.ExceptionHandlerFilter</filter-class>
-   </filter>
-   <filter-mapping>
-   <filter-name>exceptionHanderFilter</filter-name>
-   <url-pattern>/*</url-pattern>
-   </filter-mapping>
-    -->
+    <!--  现在先注释掉，否则看不到错误信息
+    <filter>
+     <filter-name>exceptionHanderFilter</filter-name>
+     <filter-class>com.shop.filter.ExceptionHandlerFilter</filter-class>
+     </filter>
+     <filter-mapping>
+     <filter-name>exceptionHanderFilter</filter-name>
+     <url-pattern>/*</url-pattern>
+     </filter-mapping>
+      -->
+
+    <!--用户权限认证过滤器-->
+    <!--<filter>
+        <filter-name>authenticationFilter</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+        <init-param>
+            <param-name>targetBeanName</param-name>
+            <param-value>authenticationFilter</param-value>
+        </init-param>
+        <init-param>
+            <param-name>targetFilterLifecycle</param-name>
+            <param-value>true</param-value>
+        </init-param>
+        <init-param>
+            <param-name>excludePatterns</param-name>
+            <param-value>/register/authenticateFailed,/register/signup,/register/login</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>authenticationFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>-->
+
     <!-- Spring监听器 -->
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
