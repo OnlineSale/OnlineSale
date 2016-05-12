@@ -2,7 +2,9 @@ package com.shop.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -33,7 +35,7 @@ public class SubCategoryController {
 		String name = request.getParameter("subCategoryName");
 		String categoryId  = request.getParameter("categoryId");
 		String subCategoryDesc = request.getParameter("subCategoryDesc");
-		if(name==null&&categoryId==null){
+		if(name==null||categoryId==null){
 			return Message.getMessage(0, "参数为空！", "");
 		}else if(subCategoryService.findByName(name)!=null){
 			return Message.getMessage(0, "小类已存在!", "");
@@ -50,7 +52,9 @@ public class SubCategoryController {
 		record.setCategoryid(Integer.valueOf(categoryId));
 		record.setSubcategoryname(name);
 		subCategoryService.addSubCategory(record);
-		return Message.getMessage(1, "", "");
+		Map<String , Object> map =new HashMap<String, Object>();
+		map.put("subCategoryId", subCategoryService.findByName(name).getSubcategoryid().toString());
+		return Message.getMessage(1, "", map);
 	}
 	@RequestMapping("/updateSubCategory")
 	@ResponseBody
@@ -59,7 +63,7 @@ public class SubCategoryController {
 		String categoryId  = request.getParameter("categoryId");
 		String subCategoryDesc = request.getParameter("subCategoryDesc");
 		String subCategoryId = request.getParameter("subCategoryId");
-		if(name==null&&categoryId==null&&subCategoryId==null){
+		if(name==null||categoryId==null||subCategoryId==null){
 			return Message.getMessage(0, "参数为空！", "");
 		}else if(subCategoryService.findByName(name)!=null){
 			return Message.getMessage(0, "小类已存在!", "");

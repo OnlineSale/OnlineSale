@@ -51,7 +51,9 @@ public class CategoryController {
 		record.setCreatetime(date);
 		 categoryService.addCategory(record);
 //		 response.addCookie(cookie);
-		return Message.getMessage(1, "", "");
+		 Map<String, Object> map = new HashMap<String, Object>();
+		 map.put("categoryId", categoryService.findByName(categoryName).getCategoryid().toString());
+		return Message.getMessage(1, "", map);
 		
 	}
 	@RequestMapping("/updateCategory")
@@ -83,7 +85,6 @@ public class CategoryController {
 	@RequestMapping("/deleteCategory")
 	@ResponseBody
 	public Object deleteCategory(String categoryId){
-		System.out.print(">>>>>>>>>>>what");
 //		String categoryId = request.getParameter("categoryId");
 		if(categoryId==null){
 			return Message.getMessageParmNull();
