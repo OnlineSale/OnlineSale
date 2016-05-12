@@ -7,7 +7,7 @@
     <result column="orderId" property="orderid" jdbcType="INTEGER" />
     <result column="address" property="address" jdbcType="VARCHAR" />
     <result column="receiver" property="receiver" jdbcType="VARCHAR" />
-    <result column="phone" property="phone" jdbcType="INTEGER" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
     <result column="fixPhone" property="fixphone" jdbcType="VARCHAR" />
     <result column="postcode" property="postcode" jdbcType="INTEGER" />
     <result column="logisticsCom" property="logisticscom" jdbcType="VARCHAR" />
@@ -33,7 +33,7 @@
       fixPhone, postcode, logisticsCom, 
       logisticsNumber)
     values (#{logisticsid,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{orderid,jdbcType=INTEGER}, 
-      #{address,jdbcType=VARCHAR}, #{receiver,jdbcType=VARCHAR}, #{phone,jdbcType=INTEGER}, 
+      #{address,jdbcType=VARCHAR}, #{receiver,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
       #{fixphone,jdbcType=VARCHAR}, #{postcode,jdbcType=INTEGER}, #{logisticscom,jdbcType=VARCHAR}, 
       #{logisticsnumber,jdbcType=VARCHAR})
   </insert>
@@ -88,7 +88,7 @@
         #{receiver,jdbcType=VARCHAR},
       </if>
       <if test="phone != null" >
-        #{phone,jdbcType=INTEGER},
+        #{phone,jdbcType=VARCHAR},
       </if>
       <if test="fixphone != null" >
         #{fixphone,jdbcType=VARCHAR},
@@ -120,7 +120,7 @@
         receiver = #{receiver,jdbcType=VARCHAR},
       </if>
       <if test="phone != null" >
-        phone = #{phone,jdbcType=INTEGER},
+        phone = #{phone,jdbcType=VARCHAR},
       </if>
       <if test="fixphone != null" >
         fixPhone = #{fixphone,jdbcType=VARCHAR},
@@ -143,7 +143,7 @@
       orderId = #{orderid,jdbcType=INTEGER},
       address = #{address,jdbcType=VARCHAR},
       receiver = #{receiver,jdbcType=VARCHAR},
-      phone = #{phone,jdbcType=INTEGER},
+      phone = #{phone,jdbcType=VARCHAR},
       fixPhone = #{fixphone,jdbcType=VARCHAR},
       postcode = #{postcode,jdbcType=INTEGER},
       logisticsCom = #{logisticscom,jdbcType=VARCHAR},

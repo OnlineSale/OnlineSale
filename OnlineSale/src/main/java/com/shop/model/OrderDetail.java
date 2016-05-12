@@ -7,6 +7,12 @@ public class OrderDetail {
 
     private Integer goodnumber;
 
+    private String image;
+
+    private Double price;
+
+    private Double totalprice;
+
     public Integer getOrderid() {
         return orderid;
     }
@@ -29,5 +35,29 @@ public class OrderDetail {
 
     public void setGoodnumber(Integer goodnumber) {
         this.goodnumber = goodnumber;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image == null ? null : image.trim();
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public Double getTotalprice() {
+        return totalprice;
+    }
+
+    public void setTotalprice(Double totalprice) {
+        this.totalprice = totalprice;
     }
 }

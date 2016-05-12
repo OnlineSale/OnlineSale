@@ -5,9 +5,12 @@
     <id column="orderId" property="orderid" jdbcType="INTEGER" />
     <result column="goodId" property="goodid" jdbcType="INTEGER" />
     <result column="goodNumber" property="goodnumber" jdbcType="INTEGER" />
+    <result column="image" property="image" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="DOUBLE" />
+    <result column="totalPrice" property="totalprice" jdbcType="DOUBLE" />
   </resultMap>
   <sql id="Base_Column_List" >
-    orderId, goodId, goodNumber
+    orderId, goodId, goodNumber, image, price, totalPrice
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -20,9 +23,11 @@
     where orderId = #{orderid,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.shop.model.OrderDetail" >
-    insert into orderdetail (orderId, goodId, goodNumber
+    insert into orderdetail (orderId, goodId, goodNumber, 
+      image, price, totalPrice
       )
-    values (#{orderid,jdbcType=INTEGER}, #{goodid,jdbcType=INTEGER}, #{goodnumber,jdbcType=INTEGER}
+    values (#{orderid,jdbcType=INTEGER}, #{goodid,jdbcType=INTEGER}, #{goodnumber,jdbcType=INTEGER}, 
+      #{image,jdbcType=VARCHAR}, #{price,jdbcType=DOUBLE}, #{totalprice,jdbcType=DOUBLE}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.shop.model.OrderDetail" >
@@ -37,6 +42,15 @@
       <if test="goodnumber != null" >
         goodNumber,
       </if>
+      <if test="image != null" >
+        image,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="totalprice != null" >
+        totalPrice,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="orderid != null" >
@@ -47,6 +61,15 @@
       </if>
       <if test="goodnumber != null" >
         #{goodnumber,jdbcType=INTEGER},
+      </if>
+      <if test="image != null" >
+        #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="totalprice != null" >
+        #{totalprice,jdbcType=DOUBLE},
       </if>
     </trim>
   </insert>
@@ -59,13 +82,25 @@
       <if test="goodnumber != null" >
         goodNumber = #{goodnumber,jdbcType=INTEGER},
       </if>
+      <if test="image != null" >
+        image = #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="totalprice != null" >
+        totalPrice = #{totalprice,jdbcType=DOUBLE},
+      </if>
     </set>
     where orderId = #{orderid,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.shop.model.OrderDetail" >
     update orderdetail
     set goodId = #{goodid,jdbcType=INTEGER},
-      goodNumber = #{goodnumber,jdbcType=INTEGER}
+      goodNumber = #{goodnumber,jdbcType=INTEGER},
+      image = #{image,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DOUBLE},
+      totalPrice = #{totalprice,jdbcType=DOUBLE}
     where orderId = #{orderid,jdbcType=INTEGER}
   </update>
 </mapper>

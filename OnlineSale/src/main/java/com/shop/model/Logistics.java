@@ -11,7 +11,7 @@ public class Logistics {
 
     private String receiver;
 
-    private Integer phone;
+    private String phone;
 
     private String fixphone;
 
@@ -61,12 +61,12 @@ public class Logistics {
         this.receiver = receiver == null ? null : receiver.trim();
     }
 
-    public Integer getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(Integer phone) {
-        this.phone = phone;
+    public void setPhone(String phone) {
+        this.phone = phone == null ? null : phone.trim();
     }
 
     public String getFixphone() {

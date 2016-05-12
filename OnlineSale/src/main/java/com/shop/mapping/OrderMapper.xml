@@ -15,10 +15,11 @@
     <result column="payTime" property="paytime" jdbcType="VARCHAR" />
     <result column="sendGoodTime" property="sendgoodtime" jdbcType="VARCHAR" />
     <result column="completeTime" property="completetime" jdbcType="VARCHAR" />
+    <result column="commentState" property="commentstate" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
     orderId, userId, total, costDIscount, remark, shopTime, logisticsId, orderState, 
-    payWay, carriageId, payTime, sendGoodTime, completeTime
+    payWay, carriageId, payTime, sendGoodTime, completeTime, commentState
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -35,12 +36,12 @@
       costDIscount, remark, shopTime, 
       logisticsId, orderState, payWay, 
       carriageId, payTime, sendGoodTime, 
-      completeTime)
+      completeTime, commentState)
     values (#{orderid,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{total,jdbcType=DOUBLE}, 
       #{costdiscount,jdbcType=DOUBLE}, #{remark,jdbcType=VARCHAR}, #{shoptime,jdbcType=VARCHAR}, 
       #{logisticsid,jdbcType=INTEGER}, #{orderstate,jdbcType=INTEGER}, #{payway,jdbcType=INTEGER}, 
       #{carriageid,jdbcType=INTEGER}, #{paytime,jdbcType=VARCHAR}, #{sendgoodtime,jdbcType=VARCHAR}, 
-      #{completetime,jdbcType=VARCHAR})
+      #{completetime,jdbcType=VARCHAR}, #{commentstate,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.shop.model.Order" >
     insert into order
@@ -84,6 +85,9 @@
       <if test="completetime != null" >
         completeTime,
       </if>
+      <if test="commentstate != null" >
+        commentState,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="orderid != null" >
@@ -124,6 +128,9 @@
       </if>
       <if test="completetime != null" >
         #{completetime,jdbcType=VARCHAR},
+      </if>
+      <if test="commentstate != null" >
+        #{commentstate,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -166,6 +173,9 @@
       <if test="completetime != null" >
         completeTime = #{completetime,jdbcType=VARCHAR},
       </if>
+      <if test="commentstate != null" >
+        commentState = #{commentstate,jdbcType=INTEGER},
+      </if>
     </set>
     where orderId = #{orderid,jdbcType=INTEGER}
   </update>
@@ -182,7 +192,8 @@
       carriageId = #{carriageid,jdbcType=INTEGER},
       payTime = #{paytime,jdbcType=VARCHAR},
       sendGoodTime = #{sendgoodtime,jdbcType=VARCHAR},
-      completeTime = #{completetime,jdbcType=VARCHAR}
+      completeTime = #{completetime,jdbcType=VARCHAR},
+      commentState = #{commentstate,jdbcType=INTEGER}
     where orderId = #{orderid,jdbcType=INTEGER}
   </update>
 </mapper>
