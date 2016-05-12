@@ -1,7 +1,5 @@
 package com.shop.model;
 
-import java.util.DoubleSummaryStatistics;
-
 /**
  * Created by wqlin on 16-5-7.
  */
