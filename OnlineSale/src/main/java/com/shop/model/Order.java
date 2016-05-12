@@ -27,6 +27,8 @@ public class Order {
 
     private String completetime;
 
+    private Integer commentstate;
+
     public Integer getOrderid() {
         return orderid;
     }
@@ -129,5 +131,13 @@ public class Order {
 
     public void setCompletetime(String completetime) {
         this.completetime = completetime == null ? null : completetime.trim();
+    }
+
+    public Integer getCommentstate() {
+        return commentstate;
+    }
+
+    public void setCommentstate(Integer commentstate) {
+        this.commentstate = commentstate;
     }
 }

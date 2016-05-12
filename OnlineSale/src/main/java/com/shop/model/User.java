@@ -13,7 +13,7 @@ public class User {
 
     private String idcard;
 
-    private Integer phone;
+    private String phone;
 
     private Integer integralid;
 
@@ -69,11 +69,11 @@ public class User {
         this.idcard = idcard == null ? null : idcard.trim();
     }
 
-    public Integer getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(Integer phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
