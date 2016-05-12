@@ -18,22 +18,22 @@ public class UserServiceImp implements UserService{
 		userDao.insert(user);
 	}
 
-	@Override
+	 
 	public int update(User user) {
 		return userDao.updateByPrimaryKeySelective(user);
 	}
 
-	@Override
+ 
 	public User find(int id) {
 		return userDao.selectByPrimaryKey(id);
 	}
 
-	@Override
+ 
 	public User findUserInfo(int id) {
 		return userDao.findUserInfoById(id);
 	}
 
-	@Override
+ 
 	public User login(User user) {
 		return userDao.login(user);
 	}

@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.shop.bean.GoodBean;
 import com.shop.dao.GoodMapper;
 import com.shop.model.Good;
 import com.shop.service.GoodService;
@@ -25,11 +26,8 @@ public class GoodServiceImp implements GoodService{
 		// TODO Auto-generated method stub
 		goodMapper.insert(good);
 	}
-
-	public void updateGood(Good good) {
-		// TODO Auto-generated method stub
-		goodMapper.updateByPrimaryKey(good);
-	}
+	
+	
 
 	public void deleteGood(Integer id) {
 		// TODO Auto-generated method stub
@@ -44,6 +42,22 @@ public class GoodServiceImp implements GoodService{
 	public List findByCategoryId(Integer categoryId) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+
+
+	public void updateGood(GoodBean record) {
+		// TODO Auto-generated method stub
+		Good good = goodMapper.selectByPrimaryKey(record.getGoodId());
+		good.setClassid(record.getSubCategoryId());
+		good.setGoodname(record.getGoodName());
+		good.setStoke(record.getStoke());
+		good.setGoodstate(record.getGoodState());
+		good.setGooddesc(record.getGoodDesc());
+		good.setBrand(record.getBrand());
+		good.setGoodlable(record.getGoodLable());
+		good.setGoodimage(record.getGoodImage());
+		goodMapper.updateByPrimaryKey(good);
 	}
 
 }

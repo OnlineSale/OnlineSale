@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.shop.bean.GoodBean;
 import com.shop.model.Good;
 import com.shop.service.GoodService;
 import com.shop.util.Message;
@@ -69,6 +70,13 @@ public class GoodController {
 		goodService.deleteGood(Integer.valueOf(goodId));
 		return Message.getMessage();
 
+	}
+	
+	@RequestMapping("/updateGood")
+	@ResponseBody
+	public Object updateGood(GoodBean record){
+		
+		return Message.getMessage();
 	}
 
 }
