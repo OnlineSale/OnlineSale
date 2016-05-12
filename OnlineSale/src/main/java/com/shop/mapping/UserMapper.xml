@@ -8,7 +8,7 @@
     <result column="payPassword" property="paypassword" jdbcType="INTEGER" />
     <result column="registTime" property="registtime" jdbcType="VARCHAR" />
     <result column="idcard" property="idcard" jdbcType="VARCHAR" />
-    <result column="phone" property="phone" jdbcType="INTEGER" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
     <result column="integralId" property="integralid" jdbcType="INTEGER" />
     <result column="memberLevel" property="memberlevel" jdbcType="INTEGER" />
     <result column="userImage" property="userimage" jdbcType="VARCHAR" />
@@ -35,7 +35,7 @@
       userImage)
     values (#{userid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
       #{paypassword,jdbcType=INTEGER}, #{registtime,jdbcType=VARCHAR}, #{idcard,jdbcType=VARCHAR}, 
-      #{phone,jdbcType=INTEGER}, #{integralid,jdbcType=INTEGER}, #{memberlevel,jdbcType=INTEGER}, 
+      #{phone,jdbcType=VARCHAR}, #{integralid,jdbcType=INTEGER}, #{memberlevel,jdbcType=INTEGER},
       #{userimage,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.shop.model.User" >
@@ -92,7 +92,7 @@
         #{idcard,jdbcType=VARCHAR},
       </if>
       <if test="phone != null" >
-        #{phone,jdbcType=INTEGER},
+        #{phone,jdbcType=VARCHAR},
       </if>
       <if test="integralid != null" >
         #{integralid,jdbcType=INTEGER},
@@ -124,7 +124,7 @@
         idcard = #{idcard,jdbcType=VARCHAR},
       </if>
       <if test="phone != null" >
-        phone = #{phone,jdbcType=INTEGER},
+        phone = #{phone,jdbcType=VARCHAR},
       </if>
       <if test="integralid != null" >
         integralId = #{integralid,jdbcType=INTEGER},
@@ -146,7 +146,7 @@
       payPassword = #{paypassword,jdbcType=INTEGER},
       registTime = #{registtime,jdbcType=VARCHAR},
       idcard = #{idcard,jdbcType=VARCHAR},
-      phone = #{phone,jdbcType=INTEGER},
+      phone = #{phone,jdbcType=VARCHAR},
       integralId = #{integralid,jdbcType=INTEGER},
       memberLevel = #{memberlevel,jdbcType=INTEGER},
       userImage = #{userimage,jdbcType=VARCHAR}
@@ -163,7 +163,7 @@
     <result column="username" property="username" jdbcType="VARCHAR" />
     <result column="registTime" property="registtime" jdbcType="VARCHAR" />
     <result column="idcard" property="idcard" jdbcType="VARCHAR" />
-    <result column="phone" property="phone" jdbcType="INTEGER" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
     <result column="integralId" property="integralid" jdbcType="INTEGER" />
     <result column="memberLevel" property="memberlevel" jdbcType="INTEGER" />
     <result column="userImage" property="userimage" jdbcType="VARCHAR" />
