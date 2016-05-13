@@ -4,6 +4,7 @@ import com.shop.dao.UserInfoDao;
 import com.shop.model.RegisterInfo;
 import com.shop.service.RegisterService;
 import com.shop.util.MD5tool;
+import com.shop.util.PatternMatcher;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -23,6 +24,8 @@ public class RegisterServiceImpl implements RegisterService {
     private static final String KEY_ERROR_INFO="errors";
     private static final String[] ERROR_DUPLICATE_USER_NAME={"已经存在重复的用户名"};
     private static final String[] ERROR_VALID_CODE={"验证码错误"};
+
+    private static final String userNamePattern="^[a-zA-Z0-9_@-]{3,20}$";
     @Resource
     UserInfoDao userInfoDao;
 
@@ -37,8 +40,7 @@ public class RegisterServiceImpl implements RegisterService {
             return result;
         }*/
         //判断数据库是否已经存在重复的用户名
-        int sum=userInfoDao.getSumOfSameUserName(registerInfo.getUserName());
-        if(sum>0){
+        if(isExistSameUserName(registerInfo.getUserName())){
             result.put(KEY_RESULT_STATE,STATE_FAILD);
             result.put(KEY_ERROR_INFO,ERROR_DUPLICATE_USER_NAME);
             return result;
@@ -50,5 +52,26 @@ public class RegisterServiceImpl implements RegisterService {
         result.put(KEY_RESULT_STATE,STATE_SUCCESS);
         result.put(KEY_ERROR_INFO,null);
         return result;
+    }
+
+    public Object checkUserName(String userName){
+        Map<String,Object> result=new HashMap<String, Object>();
+        if(!PatternMatcher.isMatch(userNamePattern,userName)){
+            result.put(KEY_RESULT_STATE,STATE_FAILD);
+            return result;
+        }
+        if(isExistSameUserName(userName)){
+            result.put(KEY_RESULT_STATE,STATE_FAILD);
+            return result;
+        }
+        result.put(KEY_RESULT_STATE,STATE_SUCCESS);
+        return result;
+    }
+
+    private boolean isExistSameUserName(String userName){
+        int sum=userInfoDao.getSumOfSameUserName(userName);
+        if(sum>0)
+            return true;
+        return false;
     }
 }

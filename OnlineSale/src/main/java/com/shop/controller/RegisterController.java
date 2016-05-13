@@ -112,4 +112,10 @@ public class RegisterController {
         logInOutService.generateNewValidCode(request,response,session);
     }
 
+    @RequestMapping("/checkUserName")
+    @ResponseBody
+    public Object checkUserName(String userName){
+        return registerService.checkUserName(userName);
+    }
+
 }

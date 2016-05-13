@@ -57,7 +57,7 @@
 		<property name="maxInMemorySize" value="40960" />
 	</bean>
 
-	 文源修改
+	 <!--文源修改-->
 	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
 		<property name="basename" value="classpath:validMessage"/>
 		<property name="fileEncodings" value="utf-8"/>
@@ -67,7 +67,7 @@
 
 	<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
 		<property name="providerClass" value="org.hibernate.validator.HibernateValidator"/>
-		<!如果不加默认使用classpath下的ValidationMessages.properties
+		<!--如果不加默认使用classpath下的ValidationMessages.properties-->
 		<property name="validationMessageSource" ref="messageSource"/>
 	</bean>
 
