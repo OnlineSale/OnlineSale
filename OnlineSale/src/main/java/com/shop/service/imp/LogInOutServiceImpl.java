@@ -4,6 +4,7 @@ import com.shop.dao.UserInfoDao;
 import com.shop.model.LoginInfo;
 import com.shop.model.UserInfo;
 import com.shop.service.LogInOutService;
+import com.shop.util.MD5tool;
 import com.shop.util.ValidCodeGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,17 +36,28 @@ public class LogInOutServiceImpl implements LogInOutService {
         }
         String userName=loginInfo.getUserName();
         String passWord=loginInfo.getPassWord();
+        passWord= MD5tool.createPassword(passWord);
         userInfo=userInfoDao.getUserInfo(userName,passWord);
         return userInfo;
     }
 
-
+    /**
+     * 生成新的登陆验证码
+     * @param request
+     * @param response
+     * @param session
+     */
     public void generateNewValidCode(HttpServletRequest request, HttpServletResponse response, HttpSession session){
         String validCode=validCodeGenerator.getRandcode(request,response);
         session.setAttribute(KEY_VALID_CODE,validCode);
     }
 
-
+    /**
+     * 检查登陆验证码
+     * @param loginInfo
+     * @param session
+     * @return
+     */
     private boolean checkValidCode(LoginInfo loginInfo,HttpSession session){
         String checkedValidCode=loginInfo.getValidCode();
         String realValidCode=(String)session.getAttribute(KEY_VALID_CODE);

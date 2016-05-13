@@ -14,4 +14,11 @@ public interface RegisterService {
      * @return
      */
     public Object register(RegisterInfo registerInfo);
+
+    /**
+     * 检查用户名格式是否正确以及是否与数据库已有的用户名重复
+     * @param userName
+     * @return
+     */
+    public Object checkUserName(String userName);
 }
