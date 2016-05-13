@@ -27,14 +27,14 @@ public class RegisterInfo {
     @Pattern(regexp = "^\\d+$",message ="{Pattern.registerinfo.phoneNumber}")
     private String phoneNumber;
 
-    @Pattern(regexp = "^\\d*$")
-    private String invister;
 
-    public void setInvister(String invister) {
+    private Integer invister;
+
+    public void setInvister(Integer invister) {
         this.invister = invister;
     }
 
-    public String getInvister() {
+    public Integer getInvister() {
         return invister;
     }
 
