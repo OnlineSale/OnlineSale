@@ -72,9 +72,7 @@ public class RegisterServiceImpl implements RegisterService {
     }
 
     private boolean isExistSameUserName(String userName){
-        int sum=userInfoDao.getSumOfSameUserName(userName);
-        if(sum>0)
-            return true;
-        return false;
+        Integer sum=userInfoDao.getSumOfSameUserName(userName);
+        return sum>0;
     }
 }
