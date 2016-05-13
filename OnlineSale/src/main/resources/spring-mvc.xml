@@ -12,13 +12,12 @@
 	<!-- 自动扫描该包，使SpringMVC认为包下用了@controller注解的类是控制器 -->
 	<context:component-scan base-package="com.shop.controller" />
 
-	<!--  <mvc:annotation-driven validator="validator">
+	  <mvc:annotation-driven validator="validator">
 		<mvc:message-converters register-defaults="true">
 			<ref bean="jsonConverter"/>
 			<ref bean="stringConverter"/>
 		</mvc:message-converters>
 	</mvc:annotation-driven>
-	-->
 	<!--避免IE执行AJAX时，返回JSON出现下载文件 -->
 	<bean id="stringConverter"
 		  class="org.springframework.http.converter.StringHttpMessageConverter">
@@ -30,7 +29,7 @@
 	</bean>
 	<bean id="jsonConverter"
 		  class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"></bean>
-	<bean
+	<!--<bean
         class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
         <property name="messageConverters">  
             <list>  
@@ -38,7 +37,7 @@
                 <ref bean="jsonConverter" />  
             </list>
         </property>
-    </bean>  
+    </bean>  -->
 	<!-- 定义跳转的文件的前后缀 ，视图模式配置 -->
 	<bean
 			class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -58,7 +57,7 @@
 		<property name="maxInMemorySize" value="40960" />
 	</bean>
 
-	<!-- 文源修改
+	 文源修改
 	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
 		<property name="basename" value="classpath:validMessage"/>
 		<property name="fileEncodings" value="utf-8"/>
@@ -71,6 +70,5 @@
 		<!如果不加默认使用classpath下的ValidationMessages.properties
 		<property name="validationMessageSource" ref="messageSource"/>
 	</bean>
-	 -->
 
 </beans>  

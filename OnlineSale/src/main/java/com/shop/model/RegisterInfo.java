@@ -9,11 +9,12 @@ import javax.validation.constraints.Pattern;
 public class RegisterInfo {
 
     @NotNull(message = "{NotNull.registerinfo.userName}")
-    @Pattern(regexp = "^[a-zA-Z0-9_@-]{3,15}$",message = "{Pattern.registerinfo.userName}")
+    @Pattern(regexp = "^[a-zA-Z0-9_@-]{3,20}$",message = "{Pattern.registerinfo.userName}")
     private String userName;
 
     @NotNull(message = "{NotNull.registerinfo.passWord}")
-    @Pattern(regexp = "^[-\\da-zA-Z`=\\\\\\[\\];',./~!@#$%^&*()_+|{}:\"<>?]*$",message = "{Pattern.registerinfo.passWord}")
+    @Pattern(regexp = "\n" +
+            "^(?=.*\\\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%]).{6,20}$",message = "{Pattern.registerinfo.passWord}")
     private String passWord;
 
     //验证码
@@ -25,6 +26,17 @@ public class RegisterInfo {
     @NotNull(message="{NotNull.register.phoneNumber}")
     @Pattern(regexp = "^\\d+$",message ="{Pattern.registerinfo.phoneNumber}")
     private String phoneNumber;
+
+    @Pattern(regexp = "^\\d*$")
+    private String invister;
+
+    public void setInvister(String invister) {
+        this.invister = invister;
+    }
+
+    public String getInvister() {
+        return invister;
+    }
 
     public void setUserName(String userName) {
         this.userName = userName;

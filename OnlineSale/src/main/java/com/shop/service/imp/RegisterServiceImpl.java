@@ -3,6 +3,7 @@ package com.shop.service.imp;
 import com.shop.dao.UserInfoDao;
 import com.shop.model.RegisterInfo;
 import com.shop.service.RegisterService;
+import com.shop.util.MD5tool;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -27,7 +28,7 @@ public class RegisterServiceImpl implements RegisterService {
 
     public Object register(RegisterInfo registerInfo) {
         Map<String,Object> result=new HashMap<String, Object>();
-        //判断验证码是否正确
+        //判断短信验证码是否正确
         /*String realValidCode=registerInfo.getRealValidCode();
         String checkedValidCode=registerInfo.getValidCode();
         if(false&&!checkedValidCode.equals(realValidCode)){
@@ -42,6 +43,9 @@ public class RegisterServiceImpl implements RegisterService {
             result.put(KEY_ERROR_INFO,ERROR_DUPLICATE_USER_NAME);
             return result;
         }
+        String passWord=registerInfo.getPassWord();
+        passWord= MD5tool.createPassword(passWord);
+        registerInfo.setPassWord(passWord);
         userInfoDao.addNewUser(registerInfo);
         result.put(KEY_RESULT_STATE,STATE_SUCCESS);
         result.put(KEY_ERROR_INFO,null);
