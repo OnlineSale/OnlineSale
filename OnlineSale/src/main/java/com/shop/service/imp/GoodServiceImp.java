@@ -60,4 +60,36 @@ public class GoodServiceImp implements GoodService{
 		goodMapper.updateByPrimaryKey(good);
 	}
 
+
+
+	
+
+
+
+	public String changeGoodState(Integer goodId, String state) {
+		// TODO Auto-generated method stub
+		Good record = goodMapper.selectByPrimaryKey(goodId);
+		if(record==null){ //没有这个商品
+			return  "商品不存在";
+		}
+		record.setGoodstate(state);
+		goodMapper.updateByPrimaryKey(record);
+		return null;
+	}
+
+
+
+	public int getGoodsNumber(String state) {
+		// TODO Auto-generated method stub
+		return goodMapper.selectGoodsNumber(state);
+	}
+
+
+
+	public List findByState(String state, Integer page, Integer number) {
+		page = (page-1)*number;
+		// TODO Auto-generated method stub
+		return goodMapper.selectGoodsByState(state, page, number);
+	}
+
 }

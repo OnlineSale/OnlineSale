@@ -1,5 +1,9 @@
 package com.shop.dao;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
 import com.shop.model.Carriage;
 
 public interface CarriageMapper {
@@ -14,4 +18,9 @@ public interface CarriageMapper {
     int updateByPrimaryKeySelective(Carriage record);
 
     int updateByPrimaryKey(Carriage record);
+
+    //补充  by chuankun
+    
+    Carriage selectByName(@Param("name") String name);
+    List selectAll();
 }

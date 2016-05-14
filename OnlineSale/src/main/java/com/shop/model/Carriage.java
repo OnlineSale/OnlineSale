@@ -7,6 +7,8 @@ public class Carriage {
 
     private Double carriageprice;
 
+    private String destination;
+
     public Integer getCarriageid() {
         return carriageid;
     }
@@ -29,5 +31,13 @@ public class Carriage {
 
     public void setCarriageprice(Double carriageprice) {
         this.carriageprice = carriageprice;
+    }
+
+    public String getDestination() {
+        return destination;
+    }
+
+    public void setDestination(String destination) {
+        this.destination = destination == null ? null : destination.trim();
     }
 }

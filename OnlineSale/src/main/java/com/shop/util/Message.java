@@ -32,6 +32,17 @@ public class Message {
 		map.put("date", "");
 		return map;
 	}
+	/**成功，并有返回值
+	 * @param date
+	 * @return
+	 */
+	public static Object getMessage(Object date){
+		Map<String , Object> map = new HashMap<String, Object>();
+		map.put("code", 1);
+		map.put("error", "");
+		map.put("date", date);
+		return map;
+	}
 	public static Object getMessageParmNull(){
 		Map<String , Object> map = new HashMap<String, Object>();
 		map.put("code", 0);

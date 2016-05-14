@@ -1,5 +1,8 @@
 package com.shop.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
@@ -72,11 +75,48 @@ public class GoodController {
 
 	}
 	
-	@RequestMapping("/updateGood")
+	/**
+	 * 未实现 要修改
+	 * @param record
+	 * @return
+	 */
+	@RequestMapping("/updateGood")  
 	@ResponseBody
 	public Object updateGood(GoodBean record){
-		
+		goodService.updateGood(record);
 		return Message.getMessage();
+	}
+	
+	@RequestMapping("/getGoodsByState")
+	@ResponseBody
+	public Object getGoodsByType(String goodState,Integer page,Integer number){
+		if(goodState==null||page==null||number==null){
+			return Message.getMessageParmNull();
+		}
+		return Message.getMessage(1, "", goodService.findByState(goodState, page, number));
+	}
+	
+	@RequestMapping("/getGoodsNumber")
+	@ResponseBody
+	public Object getGoodsNumber(String goodState){
+		if(goodState==null){
+			return Message.getMessageParmNull();
+		}
+		int number  = goodService.getGoodsNumber(goodState);
+		Map  map = new HashMap<String, Object>();
+		map.put("goodState", goodState);
+		map.put("number", number);
+		return Message.getMessage(1, "", map);
+	}
+	
+	@RequestMapping("/changeGoodState")
+	@ResponseBody
+	public Object changeGoodState(Integer goodId,String goodState){
+		if(goodId==null||goodState==null){
+			return Message.getMessageParmNull();
+		}
+		String error = goodService.changeGoodState(goodId, goodState);
+		return Message.getMessage(0, error, "");
 	}
 
 }

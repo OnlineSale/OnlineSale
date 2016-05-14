@@ -21,5 +21,7 @@ public interface GoodMapper {
     
     //补充
     List selectBySubCategoryId(@Param("subCategoryId") Integer subCategoryId);
+    List selectGoodsByState(@Param("state") String state,@Param("page") Integer page,@Param("number")Integer number);
     
+    int selectGoodsNumber(@Param("state")String state);
 }
