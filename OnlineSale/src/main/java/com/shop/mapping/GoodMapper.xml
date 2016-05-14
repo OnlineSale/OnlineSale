@@ -198,7 +198,9 @@
       </if>
     </set>
     where goodId = #{goodid,jdbcType=INTEGER}
-  </update>
+
+
+ </update>
   <update id="updateByPrimaryKey" parameterType="com.shop.model.Good" >
     update good
     set classId = #{classid,jdbcType=INTEGER},

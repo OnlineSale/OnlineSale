@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.shop.dao.IntegralMapper" >
+  <resultMap id="BaseResultMap" type="com.shop.model.Integral" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="balance_integral" property="balanceIntegral" jdbcType="INTEGER"/>
+    <result column="accumulated_integral" property="accumulatedIntegral" jdbcType="INTEGER" />
+    <result column="ranking_integral" property="rankingIntegral" jdbcType="INTEGER" />
+    <result column="share_integral" property="shareIntegral" jdbcType="INTEGER" />
+    <result column="withdraw_integral" property="withdrawIntegral" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <sql id="Base_Column_List">
+  	id, user_id, balance_integral, accumulated_integral, ranking_integral, share_integral, withdraw_integral
+  </sql>
+  <insert id="save" parameterType="com.shop.model.Integral" >
+  	insert into integral (id, user_id, balance_integral, accumulated_integral, ranking_integral, share_integral, withdraw_integral) 
+  	values(#{id, jdbcType=INTEGER}, #{userId, jdbcType=INTEGER}, #{balanceIntegral, jdbcType=INTEGER}, 
+  		#{accumulatedIntegral, jdbcType=INTEGER}, #{rankingIntegral, jdbcType=INTEGER}, #{shareIntegral, jdbcType=INTEGER},
+  		#{withdrawIntegral, jdbcType=INTEGER})
+  </insert>
+  
+</mapper>
