@@ -62,6 +62,6 @@ public class LogInOutServiceImpl implements LogInOutService {
         String checkedValidCode=loginInfo.getValidCode();
         String realValidCode=(String)session.getAttribute(KEY_VALID_CODE);
         session.removeAttribute(KEY_VALID_CODE);
-        return realValidCode!=null&&realValidCode.equals(checkedValidCode);
+        return realValidCode!=null&&realValidCode.equalsIgnoreCase(checkedValidCode);
     }
 }

@@ -12,7 +12,7 @@
 	<!-- 自动扫描该包，使SpringMVC认为包下用了@controller注解的类是控制器 -->
 	<context:component-scan base-package="com.shop.controller" />
 
-	  <mvc:annotation-driven validator="validator">
+	<mvc:annotation-driven validator="validator">
 		<mvc:message-converters register-defaults="true">
 			<ref bean="jsonConverter"/>
 			<ref bean="stringConverter"/>
@@ -57,7 +57,7 @@
 		<property name="maxInMemorySize" value="40960" />
 	</bean>
 
-	 <!--文源修改-->
+	<!--文源修改-->
 	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
 		<property name="basename" value="classpath:validMessage"/>
 		<property name="fileEncodings" value="utf-8"/>

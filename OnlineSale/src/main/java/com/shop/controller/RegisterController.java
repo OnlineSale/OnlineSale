@@ -36,6 +36,8 @@ public class RegisterController {
     public static final String STATUS_AUTHENTICATION_FAIL="authenticationFail";
     public static final String[] ERRORS_AUTHENTICATION={"authentication failed"};
 
+    public static final String KEY_USER_INFO="userInfo";
+
     @Resource
     RegisterService registerService;
 
@@ -71,6 +73,7 @@ public class RegisterController {
             return result;
         }
         result.put(KEY_STATUS,STATUS_SUCCESS);
+        result.put(KEY_USER_INFO,userInfo);
         return result;
     }
 

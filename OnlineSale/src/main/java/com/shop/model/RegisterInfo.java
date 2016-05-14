@@ -13,8 +13,7 @@ public class RegisterInfo {
     private String userName;
 
     @NotNull(message = "{NotNull.registerinfo.passWord}")
-    @Pattern(regexp = "\n" +
-            "^(?=.*\\\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%]).{6,20}$",message = "{Pattern.registerinfo.passWord}")
+    @Pattern(regexp = "^(?=.*\\d)(?=.*[a-zA-Z!@#$%]).{6,20}$",message = "{Pattern.registerinfo.passWord}")
     private String passWord;
 
     //验证码
@@ -23,7 +22,7 @@ public class RegisterInfo {
 
     private String realValidCode;
 
-    @NotNull(message="{NotNull.register.phoneNumber}")
+    //@NotNull(message="{NotNull.register.phoneNumber}")
     @Pattern(regexp = "^\\d+$",message ="{Pattern.registerinfo.phoneNumber}")
     private String phoneNumber;
 
