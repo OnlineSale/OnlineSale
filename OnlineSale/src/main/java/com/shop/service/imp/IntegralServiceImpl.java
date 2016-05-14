@@ -24,4 +24,28 @@ public class IntegralServiceImpl implements IntegralService {
 		return true;
 	}
 
+	@Override
+	public Integral findByUserId(int userid) {
+		Integral integral = new Integral();
+		try{
+			integral = integralMapper.findByUserId(userid);
+		}catch(Exception e){
+			e.printStackTrace();
+			return null;
+		}
+		return integral;
+	}
+
+	@Override
+	public boolean update(Integral integral) {
+		try{
+			integralMapper.update(integral);
+		}catch(Exception e){
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+	
+
 }
