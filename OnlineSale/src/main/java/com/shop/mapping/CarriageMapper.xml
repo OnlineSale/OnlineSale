@@ -5,10 +5,22 @@
     <id column="carriageId" property="carriageid" jdbcType="INTEGER" />
     <result column="carriageName" property="carriagename" jdbcType="VARCHAR" />
     <result column="carriagePrice" property="carriageprice" jdbcType="DOUBLE" />
+    <result column="destination" property="destination" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    carriageId, carriageName, carriagePrice
+    carriageId, carriageName, carriagePrice, destination
   </sql>
+  
+   <!-- 补充by chuankun -->
+  <select id="selectByName" resultMap="BaseResultMap">
+  select *
+  from carriage
+  where carriageName = #{name}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+  select * 
+  from carriage
+  </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
@@ -20,10 +32,10 @@
     where carriageId = #{carriageid,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.shop.model.Carriage" >
-    insert into carriage (carriageId, carriageName, carriagePrice
-      )
-    values (#{carriageid,jdbcType=INTEGER}, #{carriagename,jdbcType=VARCHAR}, #{carriageprice,jdbcType=DOUBLE}
-      )
+    insert into carriage (carriageId, carriageName, carriagePrice, 
+      destination)
+    values (#{carriageid,jdbcType=INTEGER}, #{carriagename,jdbcType=VARCHAR}, #{carriageprice,jdbcType=DOUBLE}, 
+      #{destination,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.shop.model.Carriage" >
     insert into carriage
@@ -37,6 +49,9 @@
       <if test="carriageprice != null" >
         carriagePrice,
       </if>
+      <if test="destination != null" >
+        destination,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="carriageid != null" >
@@ -47,6 +62,9 @@
       </if>
       <if test="carriageprice != null" >
         #{carriageprice,jdbcType=DOUBLE},
+      </if>
+      <if test="destination != null" >
+        #{destination,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -59,13 +77,17 @@
       <if test="carriageprice != null" >
         carriagePrice = #{carriageprice,jdbcType=DOUBLE},
       </if>
+      <if test="destination != null" >
+        destination = #{destination,jdbcType=VARCHAR},
+      </if>
     </set>
     where carriageId = #{carriageid,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.shop.model.Carriage" >
     update carriage
     set carriageName = #{carriagename,jdbcType=VARCHAR},
-      carriagePrice = #{carriageprice,jdbcType=DOUBLE}
+      carriagePrice = #{carriageprice,jdbcType=DOUBLE},
+      destination = #{destination,jdbcType=VARCHAR}
     where carriageId = #{carriageid,jdbcType=INTEGER}
   </update>
 </mapper>

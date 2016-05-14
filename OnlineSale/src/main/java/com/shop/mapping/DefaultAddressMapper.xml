@@ -16,6 +16,17 @@
     default_address_id, user_id, rough_address, detail_address, receiver, phone, is_default, 
     fix_phone, postcode
   </sql>
+  <!-- 补充 -->
+  <select id="selectUserDefaultAddress" resultMap="BaseResultMap">
+  select *
+  from default_address
+  where user_id=#{userId} and is_default = '1'
+  </select>
+  <select id="selectByUserId" resultMap="BaseResultMap">
+  select *
+  from default_address
+  where user_id = #{userId}
+  </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />

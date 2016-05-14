@@ -12,4 +12,8 @@ public interface GoodService {
 	public void deleteGood(Integer id);
 	public List findBySubcategoryId(Integer subCategoryId);
 	public List findByCategoryId(Integer categoryId);
+	
+	public List findByState(String state,Integer page,Integer number);
+	public String changeGoodState(Integer goodId,String state);
+	public int getGoodsNumber(String state);
 }

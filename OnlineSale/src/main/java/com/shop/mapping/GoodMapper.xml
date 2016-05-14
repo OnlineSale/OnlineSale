@@ -28,7 +28,23 @@
   from good
   where classId=#{subCategoryId}
   </select>
-  
+  <select id="selectGoodsByState" resultMap="BaseResultMap">
+  select * 
+  from good
+  where goodState = #{state}
+  limit #{page},#{number}
+  </select>
+  <!-- 根据类型返回数量，便于分页 -->
+  <select id="selectGoodsNumber" resultType="java.lang.Integer">
+  select count(*)
+  from good 
+  where
+  <trim prefix="(" suffix=")" suffixOverrides="," >
+  <if test="state!=null">
+  goodState = #{state} ,
+  </if>
+  </trim>
+  </select>
   
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
