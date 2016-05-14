@@ -31,6 +31,17 @@ public class Good {
 
     private String goodstate;
 
+    //符合度
+    private int conformity;
+
+    public void setConformity(int conformity) {
+        this.conformity = conformity;
+    }
+
+    public int getConformity() {
+        return conformity;
+    }
+
     public Integer getGoodid() {
         return goodid;
     }

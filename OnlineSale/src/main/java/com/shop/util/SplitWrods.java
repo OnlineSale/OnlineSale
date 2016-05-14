@@ -2,7 +2,6 @@ package com.shop.util;
 
 import org.ansj.domain.Term;
 import org.ansj.splitWord.analysis.ToAnalysis;
-import org.omg.CORBA.Object;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,20 +11,24 @@ import java.util.List;
  */
 public class SplitWrods {
     /**
-     * 使用ansjseg库把传递进来的字符串进行分词，保留名词
-     * @param sentence句子
-     * @retrun 返回一个包含名词的对象数组
+     * 使用ansjseg库把传递进来的字符串进行分词处理，最后保留名词,并且在每个名词首部和尾部添加"%"
+     * @param str 一个句子
+     * @return 返回一个包含名词的对象数组
      */
-
-//    public static Object[] DivideSentenceIntoNoun(String sentence){
-//        List<String> keywords=new ArrayList<~>();
-//        List<Term> parse=ToAnalysis.parse(sentence);
-//        for(Term term:parse){
-//            if(term.getNatureStr().equals("n")||term.getNatureStr().equals("en")){
-//                s=term.getName();
-//                keywords.add(s);
-//            }
-//            return keywords.toArray();
-//        }
-//    }
+    public static List<String> DivideStringIntoNoun(String str){
+        List<String> keywords=new ArrayList<String>();
+        List<Term> parse = ToAnalysis.parse(str);
+        String s=null;
+        for(Term term:parse){
+            if(term.getNatureStr().equals("n")||term.getNatureStr().equals("en")){
+                s="%"+term.getName()+"%";
+                keywords.add(s);
+            }
+        }
+        if(keywords.isEmpty()&&str!=null){
+            str="%"+str.trim()+"%";
+            keywords.add(str);
+        }
+        return keywords;
+    }
 }
