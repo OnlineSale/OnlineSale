@@ -1,0 +1,229 @@
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>商城首页</title>
+        <meta charset="utf-8"/>
+        <script type="text/javascript" src="../js/jquery1.42.min.js"></script>
+        <script type="text/javascript" src="../js/jquery.SuperSlide.2.1.1.js"></script>
+        <link rel="stylesheet" type="text/css" href="../css/homePageCss.css"/>
+    </head>
+    <body>
+        <div id="main">
+            <div class="top">
+                <div class="left">
+                    <p>同转会员 <a class="log" href="login.html">登录</a> <a href="registerDemo.html">注册</a></p>
+                </div>
+                <div class="right">
+                    <a href="#">线下体验店</a>
+                    <a href="FinanceManagement.html">会员中心</a>
+                    <a href="#">收藏夹</a>
+                    <a href="#">服务中心</a>
+                    <a href="../Management/index-goods.html">进入后台</a>
+                </div>
+            </div>
+            <div class="second">
+                <div class="logo"><img src="../images/logo2.jpg"></div>
+                <div class="search">
+                    <div class="top">
+                        <div class="left" style="color:grey;"><span>同转商城</span>
+                            <div id="changeCity">切换 广州</div>
+
+                        </div>
+                        <div class="right">
+                            <form id="f3" action="" method="post">
+                                <input class="txt" type="text" name="search"/>
+                                <input style="margin-left: -5px" class="btn" type="button" value="搜商品" onclick=""/>
+                            
+                            </form>
+                            <p><a href="#">运动文胸</a><a href="#">智能手机</a><a href="#">T恤</a><a href="#">电脑</a></p>
+                        </div>
+                    </div>
+                    <div class="bottom"></div>
+                </div>
+                <div class="shopCart">
+                    <p><img src="../images/shopingCart.png"><a href="shopCart.html">购/易物车</a></p>
+                </div>
+            </div>
+            <div class="nav">
+                <div class="nav_left">
+                    <div class="nav_top">
+                        <div class="allKind"><img src="../images/sanheng.png">所有商品分类<img src="../images/sanjiao.png"></div>
+                        <div id="nav">
+                            <ul>
+                                <li><a href="#">首页</a></li>
+                                <li><a href="#">自营超市</a></li>
+                                <li><a href="#">抢购</a></li>
+                                <li><a href="#">易物团购</a></li>
+                                <li><a href="#">活色生鲜</a></li>
+                                <li><a href="#">电器城</a></li>
+                                <li><a href="#">医药</a></li>
+                                <li><a href="#">海外购</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="nav_bottom">
+                        <div id="menu">
+                            <ul>
+                                <li>
+                                    <a href="#">日用百货</a>
+                                    <div class="menu_content"></div>
+                                </li>
+                                <li><a href="#">文化/体育/户外</a>
+                                    <div class="menu_content"></div>
+                                </li>
+                                <li><a href="#">酒水饮料</a>
+                                    <div class="menu_content"></div>
+                                </li>
+                                <li><a href="#">粮油副食</a>
+                                    <div class="menu_content"></div>
+                                </li>
+                                <li><a href="#">服装鞋帽</a>
+                                    <div class="menu_content"></div>
+                                </li>
+                                <li><a href="#">床上用品</a>
+                                    <div class="menu_content"></div>
+                                </li>
+                                <li><a href="#">家电/家具</a>
+                                    <div class="menu_content"></div>
+                                </li>
+                                <li><a href="#">母婴用品</a>
+                                    <div class="menu_content"></div>
+                                </li>
+                                <li><a href="#">珠宝玉石</a>
+                                    <div class="menu_content"></div>
+                                </li>
+                                <li><a href="#">美容保健</a>
+                                    <div class="menu_content"></div>
+                                </li>
+                                <li><a href="#">休闲娱乐</a>
+                                    <div class="menu_content"></div>
+                                </li>
+                                <li><a href="#">地方特产</a>
+                                    <div class="menu_content"></div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div id="slideBox">
+                            <div class="hd">
+                                <ul><li>1</li><li>2</li><li>3</li></ul>
+                            </div>
+                            <div class="bd">
+                                <ul>
+                                    <li><a href="#" target="_blank"><img src="../images/pic1.jpg"/></a></li>
+                                    <li><a href="#" target="_blank"><img src="../images/pic2.jpg"/></a></li>
+                                    <li><a href="#" target="_blank"><img src="../images/pic3.jpg"/></a></li>
+                                </ul>
+                            </div>
+                            <a class="prev" href="javascript:void(0)"></a>
+                            <a class="next" href="javascript:void(0)"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="nav_right">
+                    <img src="../images/acitvity.png"/>
+                </div>
+            </div>
+            <div class="pictures">
+                <div class="new">
+                    <p class="tit">新品展示</p>
+                    <div class="new_pic">
+                        <ul><!-- li不设置高度，但插入的图片的尺寸需先制作号（width：162px，height：300px或150px）-->
+                            <li><a href="#"><img src="../images/newGood1.png"/></a></li>
+                            <li><a href="#"><img src="../images/newGood2.png"/><img src="../images/newGood3.png"/></a></li>
+                            <li><a href="#"><img src="../images/newGood4.png"/><img src="../images/newGood5.png"/></a></li>
+                            <li><a href="#"><img src="../images/newGood6.png"/><img src="../images/newGood7.png"/></a></li>
+                            <li><a href="#"><img src="../images/newGood8.png"/><img src="../images/newGood9.png"/></a></li>
+                            <li><a href="#"><img src="../images/newGood10.png"/></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="hot">
+                    <p class="tit">热销品展示</p>
+                    <div class="hot_pic">
+                        <ul><!-- li不设置高度，但插入的图片的尺寸需先制作号（width：240px，height：115px）-->
+                            <li>
+                                <a href="#">
+                                    <img src="../images/hot_pic1.jpg"/>
+                                    <p><img src="../images/sy.png">旭日商贸<span>河北唐山</span></p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src="../images/hot2.png">
+                                    <p><img src="../images/sy.png">淘旅假期<span>河南信阳</span></p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src="../images/hot3.png">
+                                    <p><img src="../images/sy.png">易物大商场<span>湖北武汉</span></p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src="../images/hot4.png">
+                                    <p><img src="../images/sy.png">贵州特色<span>贵州安顺</span></p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src="../images/hot5.png">
+                                    <p><img src="../images/sy.png">旭日商贸<span>河北唐山</span></p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src="../images/hot6.png">
+                                    <p><img src="../images/sy.png">旭日商贸<span>河北唐山</span></p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src="../images/hot7.png">
+                                    <p><img src="../images/sy.png">旭日商贸<span>河北唐山</span></p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src="../images/hot8.png">
+                                    <p><img src="../images/sy.png">旭日商贸<span>河北唐山</span></p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer">
+                <ul class="first">
+                    <li><p>关于同转</p>
+                        <a href="#">公司简介</a><br/>
+                        <a href="#">了解趋势</a><br/>
+                        <a href="#">公司风采</a><br/>
+                        <a href="#">加盟区域商标</a><br/>
+                    </li>
+                    <li><p>新手指南</p>
+                        <a href="#">会员注册</a><br/>
+                        <a href="#">实名登记</a><br/>
+                        <a href="#">算法介绍</a><br/>
+                        <a href="#">加盟优势</a><br/>
+                        <a href="#">加盟方式</a><br/>
+                    </li>
+                    <li><p>创业平台</p>
+                        <a href="#">消费商简介</a><br/>
+                        <a href="#">推广教程</a><br/>
+                        <a href="#">公司发展规划</a><br/>
+                        <a href="#">团队发展</a><br/>
+                    </li>
+                    <li><p>售后无忧</p>
+                        <a href="#">七天无理由换货</a><br/>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <script type="text/javascript">
+            jQuery("#slideBox").slide({mainCell:".bd ul",autoPlay:true,trigger:"click",delayTime:1000});
+        </script>
+    </body>
+</html>

@@ -1,0 +1,113 @@
+*{
+            margin: 0;
+            padding: 0;
+            font-family: "microsoft yahei";
+        }
+        a{
+            text-decoration: none;
+            color: grey;;
+        }
+        #login{
+            margin: 0 auto;
+            width: 1120px;background-color: white;
+        }
+        div.top{
+            width: 1120px;height: 85px;
+            background-color: #fff;
+        }
+        div.top img{
+            float: left;
+        }
+        div.top p{
+            color: grey;
+            float: right;
+            font-size: 14px;
+            padding-right: 110px;
+            padding-top: 10px;
+        }
+        div.top p a.blu{
+            text-decoration: none;
+            margin:0 20px 0 20px;
+            font-size: 12px;
+            color: #4889EB;
+        }
+        div.content{
+            width:1010px;
+            height: 500px;
+            background-color: #ffffff;
+            padding: 60px 110px 0 0;
+        }
+        div.left{
+            float: left;
+            padding-left: 200px;
+            padding-top: 20px;
+        }
+        div.right{
+            float: right;
+            width: 310px;
+            height:250px;
+            color:#B3B3B3;
+        }
+        div.right p{
+            font-size: 14px;
+        }
+        div.right p a.r{
+            text-decoration: none;
+            float: right;
+        }
+        div.right p a.blu{
+            float: right;
+            color: #4889EB;
+        }
+        div.right p.log input{
+            font-size: 16px;
+            height:58px;
+            width:256px;
+            margin: 5px auto 0px;
+            border: 1px solid #ccc;
+        }
+        div.right p.user input{
+            background-image:url("../images/user.jpg");
+            background-repeat: no-repeat;
+            background-position: center left;
+            padding-left: 50px;
+        }
+        div.right p.pass input{
+            background-image:url("../images/pass.jpg");
+            background-repeat: no-repeat;
+            background-position: center left;
+            padding-left: 50px;
+        }
+        div.right p.txt{
+            height: 20px;
+            line-height: 20px;
+            font-size: 10px;
+        }
+        div.right p.icon{
+            padding-top: 4px;
+        }
+        div.right p.txt input{
+            vertical-align: middle;
+        }
+        div.right p.sub input{
+            border: none;
+            color: white;
+            font-size: 22px;
+            height:58px;
+            width:310px;
+            background-color: #E44E4E;
+        }
+        #error_u{
+            display: none;
+            position: absolute;
+            right: 90px;
+            top: 185px;;
+            font-size: 12px;
+        }
+        #error_p{
+            display: none;
+            position: absolute;
+            right: 100px;
+            top: 250px;
+            font-size: 12px;
+        }
