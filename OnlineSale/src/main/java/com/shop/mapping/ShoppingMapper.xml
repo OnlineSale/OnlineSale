@@ -8,9 +8,22 @@
     <result column="goodNumber" property="goodnumber" jdbcType="INTEGER" />
     <result column="shopTime" property="shoptime" jdbcType="VARCHAR" />
   </resultMap>
+
+  <resultMap id="ShoppingGoodResultMap" type="com.shop.bean.ShoppingBean">
+    <id column="shoppingId" property="shoppingid" jdbcType="INTEGER" />
+    <result column="userId" property="userid" jdbcType="INTEGER" />
+    <result column="goodId" property="goodid" jdbcType="INTEGER" />
+    <result column="goodNumber" property="goodnumber" jdbcType="INTEGER" />
+    <result column="shopTime" property="shoptime" jdbcType="VARCHAR" />
+    <result column="goodName" property="goodname" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="DOUBLE" />
+    <result column="goodImage" property="goodimage" jdbcType="VARCHAR" />
+  </resultMap>
+
   <sql id="Base_Column_List" >
     shoppingId, userId, goodId, goodNumber, shopTime
   </sql>
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
@@ -90,4 +103,29 @@
       shopTime = #{shoptime,jdbcType=VARCHAR}
     where shoppingId = #{shoppingid,jdbcType=INTEGER}
   </update>
+
+  <select id="findShoppingByUserIdAndGoodId"  resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from shopping
+    where userId =#{userid,jdbcType=INTEGER} AND goodId =#{goodid,jdbcType=INTEGER}
+  </select>
+
+  <!--<select id="findShoppingByUserId" resultMap="BaseResultMap"  >-->
+    <!--select-->
+    <!--<include refid="Base_Column_List" />-->
+    <!--from shopping-->
+    <!--where userId = #{userid}-->
+  <!--</select>-->
+  <select id="findShoppingByUserId" resultMap="ShoppingGoodResultMap"  >
+    select shoppingId,userId,goodId,goodNumber,shopTime,goodName,price,goodImage
+     from (
+     (select  shoppingId,userId,goodId as gid,goodNumber,shopTime from shopping)as s
+     inner join
+     (select goodId,goodName,price,goodImage from good)as g
+    on s.gid = g.goodId
+     )
+    where userId=#{userid}
+  </select>
+
 </mapper>

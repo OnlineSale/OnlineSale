@@ -8,10 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 
 /**
  * @author chuankun   email:yichuankun@qq.com
@@ -41,18 +37,11 @@ public class UserController {
 //		}
 //	}
 
-
 	@RequestMapping("/aboutMe")
 	@ResponseBody
 	public Object aboutMe(User user){
         if (user.getUserid()==null){
            return Message.getMessageParmNull();
-        }
-        System.out.println("i'm here");
-        try {
-            User user1 = userService.findUserInfo(user.getUserid());
-        }catch (Exception e){
-            System.out.println("i'm error!");
         }
         User user1 = userService.findUserInfo(user.getUserid());
 //            Map<String,Object> map = new HashMap<String, Object>();
@@ -62,17 +51,16 @@ public class UserController {
 
 	@RequestMapping("/saveInfo")
 	@ResponseBody
-	public Object saveInfo(User user,HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
+	public Object saveInfo(User user) {
+        //验证是否登录
         int result = 0;
         if (user.getUserid() != null) {
             result = userService.update(user);
-		} else{
-            request.getRequestDispatcher("/login.jsp").forward(request, response);//
-        }
             if (result > 0) {
-                return Message.getMessage();//成功
+                return Message.getMessage(1,"",user);//成功
             }
-            return Message.getMessage(1, "保存失败", user);
+        }
+            return Message.getMessage(2, "保存失败", user);
         }
     }
 

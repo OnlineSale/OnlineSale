@@ -50,4 +50,15 @@ public class Shopping {
     public void setShoptime(String shoptime) {
         this.shoptime = shoptime == null ? null : shoptime.trim();
     }
+
+    @Override
+    public String toString() {
+        return "Shopping{" +
+                "shoppingid=" + shoppingid +
+                ", userid=" + userid +
+                ", goodid=" + goodid +
+                ", goodnumber=" + goodnumber +
+                ", shoptime='" + shoptime + '\'' +
+                '}';
+    }
 }

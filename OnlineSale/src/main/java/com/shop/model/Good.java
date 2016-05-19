@@ -161,4 +161,25 @@ public class Good {
     public void setGoodstate(String goodstate) {
         this.goodstate = goodstate == null ? null : goodstate.trim();
     }
+
+    @Override
+    public String toString() {
+        return "Good{" +
+                "goodid=" + goodid +
+                ", classid=" + classid +
+                ", goodname='" + goodname + '\'' +
+                ", price=" + price +
+                ", stoke=" + stoke +
+                ", gooddesc='" + gooddesc + '\'' +
+                ", brand='" + brand + '\'' +
+                ", goodlable='" + goodlable + '\'' +
+                ", sales=" + sales +
+                ", clicks=" + clicks +
+                ", goodpoint=" + goodpoint +
+                ", serverpoint=" + serverpoint +
+                ", logisticspoint=" + logisticspoint +
+                ", goodimage='" + goodimage + '\'' +
+                ", goodstate='" + goodstate + '\'' +
+                '}';
+    }
 }

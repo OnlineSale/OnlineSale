@@ -14,7 +14,6 @@ public class UserServiceImp implements UserService{
 	private UserMapper userDao;
 
 	public void addUser(User user) {
-		// TODO Auto-generated method stub
 		userDao.insert(user);
 	}
 
@@ -32,7 +31,6 @@ public class UserServiceImp implements UserService{
 	public User findUserInfo(int id) {
 		return userDao.findUserInfoById(id);
 	}
-
  
 	public User login(User user) {
 		return userDao.login(user);
