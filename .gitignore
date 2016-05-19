@@ -1,0 +1,9 @@
+# Created by xichur .ignore support plugin (hsz.mobi)
+target/.settings
+target/.project
+.classpath
+*.iml
+target/OnlineSale.iml
+OnlineSale/.idea
+doc/.~lock.数据库文档.doCX#
+OnlineSale/target/
