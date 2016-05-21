@@ -1,13 +1,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>hello</groupId>
-  <artifactId>OnlineSale</artifactId>
-  <packaging>war</packaging>
-  <version>0.0.1-SNAPSHOT</version>
-  <name>OnlineSale Maven Webapp</name>
-  <url>http://maven.apache.org</url>
-   <build>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>hello</groupId>
+    <artifactId>OnlineSale</artifactId>
+    <packaging>war</packaging>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>OnlineSale Maven Webapp</name>
+    <url>http://maven.apache.org</url>
+    <build>
         <finalName>OnlineSale</finalName>
         <resources>
             <resource>
@@ -245,13 +245,13 @@
             <artifactId>ansj_seg</artifactId>
             <version>3.7.2</version>
         </dependency>
-        
+
         <!-- 4月14日补充， 邮件发送-->
-		<dependency>
-		    <groupId>javax.mail</groupId>
-		    <artifactId>mail</artifactId>
-		    <version>1.4.7</version>
-		</dependency>
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+            <version>1.4.7</version>
+        </dependency>
 
         <!--添加validation-->
         <dependency>
@@ -264,6 +264,14 @@
             <artifactId>hibernate-validator</artifactId>
             <version>5.2.2.Final</version>
         </dependency>
+
+
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.2</version>
+        </dependency>
+
 
 
     </dependencies>

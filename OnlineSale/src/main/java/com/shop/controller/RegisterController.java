@@ -6,10 +6,12 @@ import com.shop.model.RegisterInfo;
 import com.shop.model.UserInfo;
 import com.shop.service.LogInOutService;
 import com.shop.service.RegisterService;
+import com.shop.service.SMSService;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
@@ -46,6 +48,9 @@ public class RegisterController {
 
     @Resource
     AuthenticationService authenticationService;
+
+    @Resource
+    SMSService smsService;
 
     @RequestMapping("/signup")
     @ResponseBody
@@ -120,5 +125,20 @@ public class RegisterController {
     public Object checkUserName(String userName){
         return registerService.checkUserName(userName);
     }
+
+    @RequestMapping("/sendSMSValidCode")
+    @ResponseBody
+    public Object sendSMSValidCode(@RequestParam("phone") String phoneNum, HttpSession session){
+        Map<String ,Object> result=new HashMap<String, Object>();
+        String realValidCode=smsService.sendValidMessage(phoneNum);
+        if(realValidCode==null){
+            result.put(KEY_STATUS,STATUS_FAILED);
+            return result;
+        }
+        session.setAttribute(KEY_VALID_CODE,realValidCode);
+        result.put(KEY_STATUS,STATUS_SUCCESS);
+        return result;
+    }
+
 
 }
