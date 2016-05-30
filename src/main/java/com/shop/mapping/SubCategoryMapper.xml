@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.shop.dao.SubCategoryMapper" >
+  <resultMap id="BaseResultMap" type="com.shop.model.SubCategory" >
+    <id column="subCategoryId" property="subcategoryid" jdbcType="INTEGER" />
+    <result column="categoryId" property="categoryid" jdbcType="INTEGER" />
+    <result column="subCategoryName" property="subcategoryname" jdbcType="VARCHAR" />
+    <result column="subCategoryDesc" property="subcategorydesc" jdbcType="VARCHAR" />
+    <result column="createTime" property="createtime" jdbcType="VARCHAR" />
+    <result column="managerId" property="managerid" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    subCategoryId, categoryId, subCategoryName, subCategoryDesc, createTime, managerId
+  </sql>
+  <!-- 补充 -->
+  
+   <select id="selectByName" resultMap="BaseResultMap">
+   select * 
+   from subCategory
+   where subCategoryName=#{name}
+   </select>
+   
+   <select id="selectByCategoryId" resultMap="BaseResultMap">
+   select * 
+   from subCategory
+   where categoryId=#{id}
+   </select>
+  
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from subcategory
+    where subCategoryId = #{subcategoryid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from subcategory
+    where subCategoryId = #{subcategoryid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shop.model.SubCategory" >
+    insert into subcategory (subCategoryId, categoryId, subCategoryName, 
+      subCategoryDesc, createTime, managerId
+      )
+    values (#{subcategoryid,jdbcType=INTEGER}, #{categoryid,jdbcType=INTEGER}, #{subcategoryname,jdbcType=VARCHAR}, 
+      #{subcategorydesc,jdbcType=VARCHAR}, #{createtime,jdbcType=VARCHAR}, #{managerid,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.shop.model.SubCategory" >
+    insert into subcategory
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="subcategoryid != null" >
+        subCategoryId,
+      </if>
+      <if test="categoryid != null" >
+        categoryId,
+      </if>
+      <if test="subcategoryname != null" >
+        subCategoryName,
+      </if>
+      <if test="subcategorydesc != null" >
+        subCategoryDesc,
+      </if>
+      <if test="createtime != null" >
+        createTime,
+      </if>
+      <if test="managerid != null" >
+        managerId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="subcategoryid != null" >
+        #{subcategoryid,jdbcType=INTEGER},
+      </if>
+      <if test="categoryid != null" >
+        #{categoryid,jdbcType=INTEGER},
+      </if>
+      <if test="subcategoryname != null" >
+        #{subcategoryname,jdbcType=VARCHAR},
+      </if>
+      <if test="subcategorydesc != null" >
+        #{subcategorydesc,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="managerid != null" >
+        #{managerid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shop.model.SubCategory" >
+    update subcategory
+    <set >
+      <if test="categoryid != null" >
+        categoryId = #{categoryid,jdbcType=INTEGER},
+      </if>
+      <if test="subcategoryname != null" >
+        subCategoryName = #{subcategoryname,jdbcType=VARCHAR},
+      </if>
+      <if test="subcategorydesc != null" >
+        subCategoryDesc = #{subcategorydesc,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=VARCHAR},
+      </if>
+      <if test="managerid != null" >
+        managerId = #{managerid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where subCategoryId = #{subcategoryid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shop.model.SubCategory" >
+    update subcategory
+    set categoryId = #{categoryid,jdbcType=INTEGER},
+      subCategoryName = #{subcategoryname,jdbcType=VARCHAR},
+      subCategoryDesc = #{subcategorydesc,jdbcType=VARCHAR},
+      createTime = #{createtime,jdbcType=VARCHAR},
+      managerId = #{managerid,jdbcType=VARCHAR}
+    where subCategoryId = #{subcategoryid,jdbcType=INTEGER}
+  </update>
+</mapper>

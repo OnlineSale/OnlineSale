@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.shop.dao.UserGroupMapper" >
+  <resultMap id="BaseResultMap" type="com.shop.model.UserGroup" >
+    <id column="userId" property="userid" jdbcType="INTEGER" />
+    <result column="userGroup" property="usergroup" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    userId, userGroup
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from usergroup
+    where userId = #{userid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from usergroup
+    where userId = #{userid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shop.model.UserGroup" >
+    insert into usergroup (userId, userGroup)
+    values (#{userid,jdbcType=INTEGER}, #{usergroup,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shop.model.UserGroup" >
+    insert into usergroup
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userid != null" >
+        userId,
+      </if>
+      <if test="usergroup != null" >
+        userGroup,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userid != null" >
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="usergroup != null" >
+        #{usergroup,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shop.model.UserGroup" >
+    update usergroup
+    <set >
+      <if test="usergroup != null" >
+        userGroup = #{usergroup,jdbcType=INTEGER},
+      </if>
+    </set>
+    where userId = #{userid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shop.model.UserGroup" >
+    update usergroup
+    set userGroup = #{usergroup,jdbcType=INTEGER}
+    where userId = #{userid,jdbcType=INTEGER}
+  </update>
+</mapper>

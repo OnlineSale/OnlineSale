@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.shop.dao.CollectionMapper" >
+  <resultMap id="BaseResultMap" type="com.shop.model.Collection" >
+    <id column="userId" property="userid" jdbcType="INTEGER" />
+    <result column="goodId" property="goodid" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    userId, goodId
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from collection
+    where userId = #{userid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from collection
+    where userId = #{userid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shop.model.Collection" >
+    insert into collection (userId, goodId)
+    values (#{userid,jdbcType=INTEGER}, #{goodid,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shop.model.Collection" >
+    insert into collection
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userid != null" >
+        userId,
+      </if>
+      <if test="goodid != null" >
+        goodId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userid != null" >
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="goodid != null" >
+        #{goodid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shop.model.Collection" >
+    update collection
+    <set >
+      <if test="goodid != null" >
+        goodId = #{goodid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where userId = #{userid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shop.model.Collection" >
+    update collection
+    set goodId = #{goodid,jdbcType=INTEGER}
+    where userId = #{userid,jdbcType=INTEGER}
+  </update>
+</mapper>
