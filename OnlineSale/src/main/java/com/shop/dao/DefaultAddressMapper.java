@@ -1,10 +1,9 @@
 package com.shop.dao;
 
-import java.util.List;
-
+import com.shop.model.DefaultAddress;
 import org.apache.ibatis.annotations.Param;
 
-import com.shop.model.DefaultAddress;
+import java.util.List;
 
 public interface DefaultAddressMapper {
     int deleteByPrimaryKey(Integer defaultAddressId);
@@ -22,4 +21,6 @@ public interface DefaultAddressMapper {
     //补充
     DefaultAddress selectUserDefaultAddress(@Param("userId")Integer userId);
     List selectByUserId(@Param("userId")Integer userId);
+
+    int deleteByKeyAndUserId(@Param("userId")Integer userId,@Param("defaultAddressId")Integer defaultAddressId);
 }

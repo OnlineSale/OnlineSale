@@ -1,8 +1,8 @@
 package com.shop.service;
 
-import java.util.List;
-
 import com.shop.model.DefaultAddress;
+
+import java.util.List;
 
 public interface DefaultAddressService {
 	
@@ -11,5 +11,9 @@ public interface DefaultAddressService {
 	public void changeDefaultAddress(Integer addressId,Integer userId);
 	public void deleteAddress(Integer addressId);
 	public List getAddressByUer(Integer userId);
+
+	//补充
+	public void setDefaultAddress(Integer addressId,Integer userId);
+	public int deleteAddress2(Integer addressId,Integer userId);
 
 }

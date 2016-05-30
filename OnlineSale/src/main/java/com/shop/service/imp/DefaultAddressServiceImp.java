@@ -1,14 +1,12 @@
 package com.shop.service.imp;
 
-import java.util.List;
-
-import javax.annotation.Resource;
-
-import org.springframework.stereotype.Service;
-
 import com.shop.dao.DefaultAddressMapper;
 import com.shop.model.DefaultAddress;
 import com.shop.service.DefaultAddressService;
+import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @author chuankun
@@ -60,14 +58,50 @@ public class DefaultAddressServiceImp implements DefaultAddressService{
 		}
 	}
 
+
 	public void deleteAddress(Integer addressId) {
 		// TODO Auto-generated method stub
 		addressMapper.deleteByPrimaryKey(addressId);
 	}
 
 	public List getAddressByUer(Integer userId) {
-		// TODO Auto-generated method stub
-		return addressMapper.selectByUserId(userId);
+		List<DefaultAddress> addressList = addressMapper.selectByUserId(userId);
+		//如果只有一个地址，设置为默认@xiechur
+		if (addressList.size()==1){
+			for (DefaultAddress address:addressList){
+				address.setIsDefault(1);
+				addressMapper.updateByPrimaryKey(address);
+			}
+		}
+		return addressList;
 	}
 
+	@Override
+	public void setDefaultAddress(Integer addressId,Integer userId) {
+		List<DefaultAddress> addressList = addressMapper.selectByUserId(userId);
+		DefaultAddress address;
+		if(addressId!=null){
+			for (DefaultAddress defaultAddress:addressList){
+				defaultAddress.setIsDefault(0);
+				addressMapper.updateByPrimaryKey(defaultAddress);
+			}
+			address = addressMapper.selectByPrimaryKey(addressId);
+			if(address==null){
+				System.out.println("地址为空！");
+				return ;
+			}
+			address.setIsDefault(1);
+			addressMapper.updateByPrimaryKey(address);
+		}else {
+			System.out.println("地址为空！");
+			return ;
+		}
+	}
+	//前端删除地址
+	public int deleteAddress2(Integer addressId,Integer userId) {
+		if (userId == null || addressId == null){
+			System.out.println("参数有误，无法删除地址");
+		}
+		return addressMapper.deleteByKeyAndUserId(userId,addressId);
+	}
 }
