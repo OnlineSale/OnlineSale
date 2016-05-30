@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<title>后台管理-商品大分类管理</title>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-COMPATIBLE" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<head>
+    <link rel="stylesheet" href="../css/bootstrap.min.css"/>
+    <!--[if lt IE 9]>
+    <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body onload="show('BigClassify')">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3">
+            <img src="../images/logo1.jpg"/>
+        </div>
+        <div class="col-md-6"><h1 class="text-primary text-left">同转商城后台</h1></div>
+        <div class="col-md-3">
+            <p class="text-warning" style="height: 75px;line-height: 75px;">系统管理员 XX<a href="../Client/homePage.html">| 退出</a></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="index-goods.html">
+                            <span class="glyphicon glyphicon-home"></span> 综合管理
+                        </a>
+                    </div>
+                    <div class="collapse navbar-collapse" style=" width:50%;margin: 0 auto;">
+                        <ul class="nav navbar-nav">
+                            <li><a href="javascript:void(0)">商品</a></li>
+                            <li><a href="javascript:void(0)">订单</a></li>
+                            <li><a href="javascript:void(0)">营销</a></li>
+                            <li><a href="javascript:void(0)">数据</a></li>
+                            <li><a href="javascript:void(0)">用户</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2">
+            <h3 class="text-center text-muted">商品管理</h3>
+            <div class="container-fluid">
+                <ul class="text-center nav nav-pills nav-stacked">
+                    <li><a id="selling" class="btn" href="selling.html">出售中的商品</a></li>
+                    <li><a id="warehouse" class="btn" href="WarehouseGoods.html">仓库中的商品</a></li>
+                    <li><a id="sellOut" class="btn" href="sellOut.html">已售罄的商品</a></li>
+                    <li><a id="classify" class="btn" href="BigClassify.html">商品分类管理</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="classify row">
+                <div class='col-md-8'>
+                <button class='btn btn-primary'  data-toggle='modal' data-target='#Modal-del' id='new' value='新建大分类'>
+                    新建大分类
+                </button>
+                <span class="text-muted" style="margin:0 20px;">商品分类管理</span>
+                </div>
+                <div class='col-md-4'>
+                    <div class='input-group'>
+                        <input type='text' style="background-image: url('../images/search.png');background-repeat: no-repeat;padding-left: 30px;background-position: left center;" class='form-control'>
+                        <span class='input-group-btn'><button class='btn btn-default' type='button'>Go!</button></span>
+                    </div>
+                </div>
+                <table id='page_table' class='table text-center'>
+                    <thead><td>分组名称</td><td>包含小类</td><td>创建时间</td><td>操作</td></thead>
+                </table>
+            </div>
+            
+            <div class="row">
+                <div class="container-fluid text-center">
+                    <ul class="pagination" id="page_bar"></ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+</div>
+
+<!--弹出框-->
+<div class="modal fade keyboard" id="Modal-del" tabindex="-1" role="dialog" 
+   aria-labelledby="ModalLabel-del" aria-hidden="true" style="margin-top:150px;">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close" 
+               data-dismiss="modal" aria-hidden="true">
+                  &times;
+            </button>
+            <h2 class="modal-title text-center" id="ModalLabel-del">
+               新建分类
+            </h2>
+         </div>
+         <div class="modal-body text-center">
+            <label class="text-muted" for="#classifyName-del">请输入类名:</label><input type="text" id="classifyName-del" name="classifyName"/>
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-primary">
+               确认
+            </button>
+         </div>
+      </div>
+    </div>
+</div>
+<div class="modal fade keyboard" id="Modal-update" tabindex="-1" role="dialog" 
+   aria-labelledby="ModalLabel-update" aria-hidden="true" style="margin-top:150px;">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close" 
+               data-dismiss="modal" aria-hidden="true">
+                  &times;
+            </button>
+            <h2 class="modal-title text-center" id="ModalLabel-update">
+               修改类名
+            </h2>
+         </div>
+         <div class="modal-body text-center">
+            <label class="text-muted" for="#classifyName-update">请输入类名:</label><input type="text" id="classifyName-update" name="classifyName"/>
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-primary">
+               修改
+            </button>
+         </div>
+      </div>
+    </div>
+</div>
+
+<script src="http://cdn.bootcss.com/jquery/3.0.0-beta1/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="../js/pagination.js"></script>
+<script src="../js/comment.js"></script>
+<script type="text/javascript">
+    function show(str){
+        tableData = [{"C0":"日用百货","C1":1000,"C2":"2016-05-04","Classify_ID":"930013005"},
+            {"C0":"母婴产品","C1":120,"C2":"2016-05-04","Classify_ID":"930013006"},
+            {"C0":"酒水饮料","C1":200,"C2":"2016-05-04","Classify_ID":"930013106"},
+            {"C0":"服装鞋帽","C1":500,"C2":"2016-05-04","Classify_ID":"930013008"},
+            {"C0":"床上用品","C1":150,"C2":"2016-05-04","Classify_ID":"930013003"},
+            {"C0":"家电家具","C1":400,"C2":"2016-05-04","Classify_ID":"930013002"},
+            {"C0":"珠宝玉石","C1":300,"C2":"2016-05-04","Classify_ID":"930013004"},
+            {"C0":"美容保健","C1":420,"C2":"2016-05-04","Classify_ID":"930013001"},
+            {"C0":"休闲娱乐","C1":240,"C2":"2016-05-04","Classify_ID":"930013801"},
+            {"C0":"地方特产","C1":350,"C2":"2016-05-04","Classify_ID":"930013007"},
+            {"C0":"体育运动","C1":460,"C2":"2016-05-04","Classify_ID":"930013701"}];
+        splitPage(1,4,str);
+    };
+    function showDetail(id){
+        //跳转到后台，并传递参数str：大分类名称
+        window.location.href="samllClassify.html?id="+id+"";
+        
+    };
+</script>
+
+</body>
+</html>

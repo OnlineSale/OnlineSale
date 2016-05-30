@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<title>后台管理-创建新商品</title>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-COMPATIBLE" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<head>
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/bootstrap.min.css" />
+    <link href="../css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/wysiwyg-editor.css" />
+    <!--[if lt IE 9]>
+    <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script type="text/javascript" src="../js/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="../js/timePicker/bootstrap.min.js"></script>
+
+    <script src="../js/timePicker/moment-with-locales.js"></script>
+	<script src="../js/timePicker/bootstrap-datetimepicker.js"></script>
+	<script type="text/javascript" src="../js/editor/wysiwyg.js"></script>
+	<script type="text/javascript" src="../js/editor/wysiwyg-editor.js"></script>
+</head>
+<body style="padding-bottom:50px;">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3">
+            <img src="../images/logo1.jpg"/>
+        </div>
+        <div class="col-md-6"><h1 class="text-primary text-left">同转商城后台</h1></div>
+        <div class="col-md-3">
+            <p class="text-warning" style="height: 75px;line-height: 75px;">系统管理员 XX<a href="../Client/homePage.html">| 退出</a></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="index-goods.html">
+                            <span class="glyphicon glyphicon-home"></span> 综合管理
+                        </a>
+                    </div>
+                    <div class="collapse navbar-collapse" style=" width:50%;margin: 0 auto;">
+                        <ul class="nav navbar-nav first-nav">
+                            <li class="active"><a href="javascript:void(0)">商品</a></li>
+                            <li><a href="javascript:void(0)">订单</a></li>
+                            <li><a href="javascript:void(0)">营销</a></li>
+                            <li><a href="javascript:void(0)">数据</a></li>
+                            <li><a href="javascript:void(0)">用户</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2">
+            <h3 class="text-center text-muted">商品管理</h3>
+            <div class="container-fluid">
+                <ul class="text-center nav nav-pills nav-stacked">
+                    <li><a id="selling" class="btn" href="selling.html">出售中的商品</a></li>
+                    <li><a id="warehouse" class="btn" href="WarehouseGoods.html">仓库中的商品</a></li>
+                    <li><a id="sellOut" class="btn" href="sellOut.html">已售罄的商品</a></li>
+                    <li><a id="classify" class="btn" href="BigClassify.html">商品分类管理</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-8">
+        	<form action="" method="post" enctype="multipart/form-data">
+        		<div class="row">
+        			<div class='col-md-12'>
+        				<h2 class="text-success text-center" style="margin:40px 0;">新建商品</h2>
+        			</div>
+        		</div>
+        		<!-- 商品基本信息 -->
+        		<div class="row" id="goodsDetail" style="border-bottom:1px solid grey;padding-bottom:20px;">
+        			<div class="col-md-3"><h4 class="text-muted text-center" style="height: 20px; line-height:210px;"><strong>基本信息</strong></h4></div>
+        			<div class="col-md-9">
+        				<div class="row">
+        					<div class="col-md-6">
+        						<div class="form-group">
+        							<select name="classifyName" class="form-control classifyData">
+        								<option value="default">大类</option>
+        							</select>
+        						</div>
+        					</div>
+        					<div class="col-md-6">
+        						<div class="form-group">
+        							<select name="classifyName" class="form-control">
+        								<option value="default">小类</option>
+        							</select>
+        						</div>
+        					</div>
+        				</div>
+        				<div class="row">
+        					<div class="row" style="padding:0 18px;margin-top:20px;">
+        						<div class="col-md-3">
+        							<label for="goodsName">商品名称</label>
+        						</div>
+        						<div class="col-md-9">
+        							<input class="form-control" type="text" name="goodsName">
+        						</div>
+        					</div>
+        					<div class="row" style="padding:0 18px;margin-top:20px;">
+        						<div class="col-md-3">
+        							<label for="goodsPrice">商品价格</label>
+        						</div>
+        						<div class="col-md-9">
+        							<input type="text" class="form-control" name="goodsPrice">
+        						</div>
+        					</div>
+        					<div class="row" style="padding:0 18px;margin-top:20px;">
+        						<div class="col-md-3">
+        							<label for="goodsPictrue" >商品图片</label>
+        						</div>
+        						<div class="col-md-6">
+        							<input type="file" multiple="multiple" class="form-control" name="goodsPictrue">
+        						</div>
+        						<div class="col-md-3">
+        							<button type="button" class="btn btn-default">上传图片</button>
+        						</div>
+        						<!--用于显示ajax传回来的图片-->
+        						<div class="row" id="showPictrue"></div>
+        					</div>
+        				</div>
+        			</div>
+        		</div>
+        		<!-- 库存、规格 -->
+        		<div class="row" id="Stock-Style" style="border-bottom:1px solid grey;padding-bottom:20px;">
+					<div class="col-md-3"><h4 class="text-muted text-center" style="height: 210px; line-height:210px;"><strong>库存/规格</strong></h4></div>
+        			<div class="col-md-9">
+        				<div class="row"></div>
+        				<div class="row"></div>
+        			</div>
+        		</div>
+        		<!--物流/其他-->
+        		<div class="row" id="Logistics-Other" style="border-bottom:1px solid grey;padding-bottom:20px;">
+        			<div class="col-md-3">
+        				<h4 class="text-muted text-center" style="height: 210px; line-height:210px;"><strong>物流/其它</strong></h4>
+        			</div>
+        			<div class="col-md-9">
+						<div class="row"><!--商品运费设置-->
+        					<div class="row" style="padding:0 18px;margin-top:20px;">
+        						<div class="col-md-3" style="line-height:100px;">
+        							<label for="goodsName">商品运费</label>
+        						</div>
+        						<div class="col-md-9">
+        							<div class="row" style="margin:10px 0;">
+        								<div class="col-md-4">
+        									<input type="radio" class="freightTemplet" checked="checked" name="freight"><label style="line-height:34px;" for="freight">统一邮费</label>
+        								</div>
+        								<div class="col-md-5">
+											<div class="input-group">
+												<span class="input-group-addon">￥</span>
+												<input type="number" min="0.00" class="form-control" name="freightNumber"/>
+											</div>
+        								</div>
+        								<div class="col-md-3"></div>
+        							</div>
+        							<div class="row" style="margin:10px 0;">
+        								<div class="col-md-4">
+        									<input  type="radio" class="freightTemplet" name="freight" id="freightTemplet"><label style="line-height:34px;" for="freight">运费模板</label>
+        								</div>
+        								<div class="col-md-5">
+        									<div class="input-group">
+        										<input type="text" disabled class="form-control" id="disabledInp" placeholder="选择模板"/>
+        										<span class="input-group-addon">
+        											<span class="glyphicon glyphicon-chevron-down"></span>
+        										</span>
+        									</div>
+        								</div>
+        								<div class="col-md-3 text-left" style="line-height:34px;">
+        									<a href="">刷新</a>|<a href="">新建</a>
+        								</div>
+        							</div>
+        						</div>
+        					</div>
+        				</div>
+        				<div class="row"><!--开售时间设置-->
+        					<div class="row" style="padding:0 18px;margin-top:20px;">
+        						<div class="col-md-3" style="line-height:100px;">
+        							<label for="goodsName">开售时间</label>
+        						</div>
+        						<div class="col-md-9">
+        							<div class="row" style="margin:10px 0;">
+        								<div class="col-md-4">
+        									<input type="radio" checked="checked"  class="sellTime" name="sellTime" value=""><label style="line-height:34px;" for="sellTime">立即开售</label>
+        								</div>
+        								<div class="col-md-8"></div>
+        							</div>
+        							<div class="row" style="margin:10px 0;">
+        								<div class="col-md-4">
+        									<input type="radio" name="sellTime" class="sellTime" id="sellTime" value=""><label style="line-height:34px;" for="sellTime">定时开售</label>
+        								</div>
+        								<div class="col-md-5">
+        									<div class="form-group">
+        										<div class='input-group date' id='datetimepicker5'>
+        											<input disabled id="disabledInp2" type='text' class="form-control" />
+        											<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+        										</div>
+        									</div>
+        								</div>	
+        								<div class="col-md-3 text-left"></div>
+        							</div>
+        						</div>
+        					</div>
+        				</div>
+        			</div>
+        		</div>
+        		<div class="row" id="GoodsDesc" style="padding-bottom:20px;">
+        			<h4 class="text-muted text-center" ><strong>详细描述</strong></h4>
+        			<div style="width:860px; margin: 30px auto;">
+					    <textarea id="editor0" name="editor" placeholder=""></textarea>
+					</div>
+        		</div>
+        		<div class="row text-center" id="Submit"><input class="btn btn-primary" type="submit" value="提 交"/></div>
+        	</form>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+<script src="../js/comment.js"></script>
+<script src="../js/editor/edit.js"></script>
+<script type="text/javascript">
+	$(document).ready(editor());
+	$(function () {
+		//时间控件
+		$('#datetimepicker5').datetimepicker({
+			defaultDate: "11/1/2013",
+			disabledDates: [
+			moment("12/25/2013"),
+			new Date(2013, 11 - 1, 21),
+			"11/22/2013 00:53"
+			]
+		});
+		//对应表单的激活
+		$("input.freightTemplet").click(function(){
+			var c = $("#freightTemplet").prop("checked");
+			if (c) {
+				$("#disabledInp").prop("disabled",false);
+			}else{
+				$("#disabledInp").prop("disabled",true);
+			}
+		});
+		$("input.sellTime").click(function(){
+			var c = $("#sellTime").prop("checked");
+			if (c) {
+				$("#disabledInp2").prop("disabled",false);
+			}else{
+				$("#disabledInp2").prop("disabled",true);
+			}
+		});
+
+
+	});
+</script>
+</body>
+</html>

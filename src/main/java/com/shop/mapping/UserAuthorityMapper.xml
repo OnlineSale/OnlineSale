@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.shop.dao.UserAuthorityMapper" >
+  <resultMap id="BaseResultMap" type="com.shop.model.UserAuthority" >
+    <id column="userGroup" property="usergroup" jdbcType="INTEGER" />
+    <result column="userAuthority" property="userauthority" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    userGroup, userAuthority
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from userauthority
+    where userGroup = #{usergroup,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from userauthority
+    where userGroup = #{usergroup,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shop.model.UserAuthority" >
+    insert into userauthority (userGroup, userAuthority)
+    values (#{usergroup,jdbcType=INTEGER}, #{userauthority,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shop.model.UserAuthority" >
+    insert into userauthority
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="usergroup != null" >
+        userGroup,
+      </if>
+      <if test="userauthority != null" >
+        userAuthority,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="usergroup != null" >
+        #{usergroup,jdbcType=INTEGER},
+      </if>
+      <if test="userauthority != null" >
+        #{userauthority,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shop.model.UserAuthority" >
+    update userauthority
+    <set >
+      <if test="userauthority != null" >
+        userAuthority = #{userauthority,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where userGroup = #{usergroup,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shop.model.UserAuthority" >
+    update userauthority
+    set userAuthority = #{userauthority,jdbcType=VARCHAR}
+    where userGroup = #{usergroup,jdbcType=INTEGER}
+  </update>
+</mapper>
