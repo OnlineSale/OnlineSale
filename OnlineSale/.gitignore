@@ -4,3 +4,5 @@ target
 OnlineSale.iml
 .classpath
 .project
+.gitignore
+doc/xiechur.txt
