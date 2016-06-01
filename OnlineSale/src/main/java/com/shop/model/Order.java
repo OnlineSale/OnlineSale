@@ -27,6 +27,10 @@ public class Order {
 
     private Integer commentstate;
 
+    private String logisticsid;
+
+    private Integer isdelete;
+
     public String getOrderid() {
         return orderid;
     }
@@ -129,5 +133,21 @@ public class Order {
 
     public void setCommentstate(Integer commentstate) {
         this.commentstate = commentstate;
+    }
+
+    public String getLogisticsid() {
+        return logisticsid;
+    }
+
+    public void setLogisticsid(String logisticsid) {
+        this.logisticsid = logisticsid == null ? null : logisticsid.trim();
+    }
+
+    public Integer getIsdelete() {
+        return isdelete;
+    }
+
+    public void setIsdelete(Integer isdelete) {
+        this.isdelete = isdelete;
     }
 }

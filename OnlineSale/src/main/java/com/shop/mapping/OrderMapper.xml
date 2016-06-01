@@ -15,28 +15,15 @@
     <result column="sendGoodTime" property="sendgoodtime" jdbcType="VARCHAR" />
     <result column="completeTime" property="completetime" jdbcType="VARCHAR" />
     <result column="commentState" property="commentstate" jdbcType="INTEGER" />
-  </resultMap>
-
-  <resultMap id="OrderResultMap" type="com.shop.bean.OrderBean">
-    <id column="orderId" property="orderid" jdbcType="VARCHAR" />
-    <result column="total" property="total" jdbcType="DOUBLE" />
-    <result column="costDIscount" property="costdiscount" jdbcType="DOUBLE" />
-    <result column="remark" property="remark" jdbcType="VARCHAR" />
-    <result column="shopTime" property="shoptime" jdbcType="VARCHAR" />
-    <result column="orderState" property="orderstate" jdbcType="INTEGER" />
-    <result column="payWay" property="payway" jdbcType="INTEGER" />
-    <result column="carriageId" property="carriageid" jdbcType="INTEGER" />
-    <result column="payTime" property="paytime" jdbcType="VARCHAR" />
-    <result column="sendGoodTime" property="sendgoodtime" jdbcType="VARCHAR" />
-    <result column="completeTime" property="completetime" jdbcType="VARCHAR" />
-    <result column="commentState" property="commentstate" jdbcType="INTEGER" />
+    <result column="logisticsId" property="logisticsid" jdbcType="VARCHAR" />
+    <result column="isDelete" property="isdelete" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
-    orderId, userId, total, costDIscount, remark, shopTime, orderState,
-    payWay, carriageId, payTime, sendGoodTime, completeTime, commentState
+    orderId, userId, total, costDIscount, remark, shopTime, orderState, payWay, carriageId,
+    payTime, sendGoodTime, completeTime, commentState, logisticsId, isDelete
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select 
+    select
     <include refid="Base_Column_List" />
     from torder
     where orderId = #{orderid,jdbcType=VARCHAR}
@@ -46,16 +33,18 @@
     where orderId = #{orderid,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.shop.model.Order" >
-    insert into torder (orderId, userId, total, 
-      costDIscount, remark, shopTime, 
-       orderState, payWay,
-      carriageId, payTime, sendGoodTime, 
-      completeTime, commentState)
-    values (#{orderid,jdbcType=VARCHAR}, #{userid,jdbcType=INTEGER}, #{total,jdbcType=DOUBLE}, 
-      #{costdiscount,jdbcType=DOUBLE}, #{remark,jdbcType=VARCHAR}, #{shoptime,jdbcType=VARCHAR}, 
-       #{orderstate,jdbcType=INTEGER}, #{payway,jdbcType=INTEGER},
-      #{carriageid,jdbcType=INTEGER}, #{paytime,jdbcType=VARCHAR}, #{sendgoodtime,jdbcType=VARCHAR}, 
-      #{completetime,jdbcType=VARCHAR}, #{commentstate,jdbcType=INTEGER})
+    insert into torder (orderId, userId, total,
+    costDIscount, remark, shopTime,
+    orderState, payWay, carriageId,
+    payTime, sendGoodTime, completeTime,
+    commentState, logisticsId, isDelete
+    )
+    values (#{orderid,jdbcType=VARCHAR}, #{userid,jdbcType=INTEGER}, #{total,jdbcType=DOUBLE},
+    #{costdiscount,jdbcType=DOUBLE}, #{remark,jdbcType=VARCHAR}, #{shoptime,jdbcType=VARCHAR},
+    #{orderstate,jdbcType=INTEGER}, #{payway,jdbcType=INTEGER}, #{carriageid,jdbcType=INTEGER},
+    #{paytime,jdbcType=VARCHAR}, #{sendgoodtime,jdbcType=VARCHAR}, #{completetime,jdbcType=VARCHAR},
+    #{commentstate,jdbcType=INTEGER}, #{logisticsid,jdbcType=VARCHAR}, #{isdelete,jdbcType=INTEGER}
+    )
   </insert>
   <insert id="insertSelective" parameterType="com.shop.model.Order" >
     insert into torder
@@ -99,6 +88,12 @@
       <if test="commentstate != null" >
         commentState,
       </if>
+      <if test="logisticsid != null" >
+        logisticsId,
+      </if>
+      <if test="isdelete != null" >
+        isDelete,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="orderid != null" >
@@ -139,6 +134,12 @@
       </if>
       <if test="commentstate != null" >
         #{commentstate,jdbcType=INTEGER},
+      </if>
+      <if test="logisticsid != null" >
+        #{logisticsid,jdbcType=VARCHAR},
+      </if>
+      <if test="isdelete != null" >
+        #{isdelete,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -181,23 +182,31 @@
       <if test="commentstate != null" >
         commentState = #{commentstate,jdbcType=INTEGER},
       </if>
+      <if test="logisticsid != null" >
+        logisticsId = #{logisticsid,jdbcType=VARCHAR},
+      </if>
+      <if test="isdelete != null" >
+        isDelete = #{isdelete,jdbcType=INTEGER},
+      </if>
     </set>
     where orderId = #{orderid,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.shop.model.Order" >
     update torder
     set userId = #{userid,jdbcType=INTEGER},
-      total = #{total,jdbcType=DOUBLE},
-      costDIscount = #{costdiscount,jdbcType=DOUBLE},
-      remark = #{remark,jdbcType=VARCHAR},
-      shopTime = #{shoptime,jdbcType=VARCHAR},
-      orderState = #{orderstate,jdbcType=INTEGER},
-      payWay = #{payway,jdbcType=INTEGER},
-      carriageId = #{carriageid,jdbcType=INTEGER},
-      payTime = #{paytime,jdbcType=VARCHAR},
-      sendGoodTime = #{sendgoodtime,jdbcType=VARCHAR},
-      completeTime = #{completetime,jdbcType=VARCHAR},
-      commentState = #{commentstate,jdbcType=INTEGER}
+    total = #{total,jdbcType=DOUBLE},
+    costDIscount = #{costdiscount,jdbcType=DOUBLE},
+    remark = #{remark,jdbcType=VARCHAR},
+    shopTime = #{shoptime,jdbcType=VARCHAR},
+    orderState = #{orderstate,jdbcType=INTEGER},
+    payWay = #{payway,jdbcType=INTEGER},
+    carriageId = #{carriageid,jdbcType=INTEGER},
+    payTime = #{paytime,jdbcType=VARCHAR},
+    sendGoodTime = #{sendgoodtime,jdbcType=VARCHAR},
+    completeTime = #{completetime,jdbcType=VARCHAR},
+    commentState = #{commentstate,jdbcType=INTEGER},
+    logisticsId = #{logisticsid,jdbcType=VARCHAR},
+    isDelete = #{isdelete,jdbcType=INTEGER}
     where orderId = #{orderid,jdbcType=VARCHAR}
   </update>
 
@@ -208,7 +217,5 @@
     where userId=#{userid,jdbcType=INTEGER}
   </select>
 
-  <select id="selectByOrderId" resultMap="">
 
-  </select>
 </mapper>
