@@ -2,12 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.shop.dao.LogisticsMapper" >
   <resultMap id="BaseResultMap" type="com.shop.model.Logistics" >
-    <id column="logisticsId" property="logisticsid" jdbcType="INTEGER" />
+    <id column="logisticsId" property="logisticsid" jdbcType="VARCHAR" />
     <result column="userId" property="userid" jdbcType="INTEGER" />
-    <result column="orderId" property="orderid" jdbcType="INTEGER" />
+    <result column="orderId" property="orderid" jdbcType="VARCHAR" />
     <result column="address" property="address" jdbcType="VARCHAR" />
     <result column="receiver" property="receiver" jdbcType="VARCHAR" />
-    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="INTEGER" />
     <result column="fixPhone" property="fixphone" jdbcType="VARCHAR" />
     <result column="postcode" property="postcode" jdbcType="INTEGER" />
     <result column="logisticsCom" property="logisticscom" jdbcType="VARCHAR" />
@@ -17,23 +17,23 @@
     logisticsId, userId, orderId, address, receiver, phone, fixPhone, postcode, logisticsCom, 
     logisticsNumber
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
     from logistics
-    where logisticsId = #{logisticsid,jdbcType=INTEGER}
+    where logisticsId = #{logisticsid,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from logistics
-    where logisticsId = #{logisticsid,jdbcType=INTEGER}
+    where logisticsId = #{logisticsid,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.shop.model.Logistics" >
     insert into logistics (logisticsId, userId, orderId, 
       address, receiver, phone, 
       fixPhone, postcode, logisticsCom, 
       logisticsNumber)
-    values (#{logisticsid,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{orderid,jdbcType=INTEGER}, 
-      #{address,jdbcType=VARCHAR}, #{receiver,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+    values (#{logisticsid,jdbcType=VARCHAR}, #{userid,jdbcType=INTEGER}, #{orderid,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{receiver,jdbcType=VARCHAR}, #{phone,jdbcType=INTEGER}, 
       #{fixphone,jdbcType=VARCHAR}, #{postcode,jdbcType=INTEGER}, #{logisticscom,jdbcType=VARCHAR}, 
       #{logisticsnumber,jdbcType=VARCHAR})
   </insert>
@@ -73,13 +73,13 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="logisticsid != null" >
-        #{logisticsid,jdbcType=INTEGER},
+        #{logisticsid,jdbcType=VARCHAR},
       </if>
       <if test="userid != null" >
         #{userid,jdbcType=INTEGER},
       </if>
       <if test="orderid != null" >
-        #{orderid,jdbcType=INTEGER},
+        #{orderid,jdbcType=VARCHAR},
       </if>
       <if test="address != null" >
         #{address,jdbcType=VARCHAR},
@@ -88,7 +88,7 @@
         #{receiver,jdbcType=VARCHAR},
       </if>
       <if test="phone != null" >
-        #{phone,jdbcType=VARCHAR},
+        #{phone,jdbcType=INTEGER},
       </if>
       <if test="fixphone != null" >
         #{fixphone,jdbcType=VARCHAR},
@@ -111,7 +111,7 @@
         userId = #{userid,jdbcType=INTEGER},
       </if>
       <if test="orderid != null" >
-        orderId = #{orderid,jdbcType=INTEGER},
+        orderId = #{orderid,jdbcType=VARCHAR},
       </if>
       <if test="address != null" >
         address = #{address,jdbcType=VARCHAR},
@@ -120,7 +120,7 @@
         receiver = #{receiver,jdbcType=VARCHAR},
       </if>
       <if test="phone != null" >
-        phone = #{phone,jdbcType=VARCHAR},
+        phone = #{phone,jdbcType=INTEGER},
       </if>
       <if test="fixphone != null" >
         fixPhone = #{fixphone,jdbcType=VARCHAR},
@@ -135,19 +135,19 @@
         logisticsNumber = #{logisticsnumber,jdbcType=VARCHAR},
       </if>
     </set>
-    where logisticsId = #{logisticsid,jdbcType=INTEGER}
+    where logisticsId = #{logisticsid,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.shop.model.Logistics" >
     update logistics
     set userId = #{userid,jdbcType=INTEGER},
-      orderId = #{orderid,jdbcType=INTEGER},
+      orderId = #{orderid,jdbcType=VARCHAR},
       address = #{address,jdbcType=VARCHAR},
       receiver = #{receiver,jdbcType=VARCHAR},
-      phone = #{phone,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=INTEGER},
       fixPhone = #{fixphone,jdbcType=VARCHAR},
       postcode = #{postcode,jdbcType=INTEGER},
       logisticsCom = #{logisticscom,jdbcType=VARCHAR},
       logisticsNumber = #{logisticsnumber,jdbcType=VARCHAR}
-    where logisticsId = #{logisticsid,jdbcType=INTEGER}
+    where logisticsId = #{logisticsid,jdbcType=VARCHAR}
   </update>
 </mapper>

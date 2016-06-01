@@ -178,4 +178,5 @@
     from user
     where userId = #{userid,jdbcType=INTEGER}
   </select>
+  
 </mapper>

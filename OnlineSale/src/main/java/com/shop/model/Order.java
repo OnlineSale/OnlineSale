@@ -1,7 +1,7 @@
 package com.shop.model;
 
 public class Order {
-    private Integer orderid;
+    private String orderid;
 
     private Integer userid;
 
@@ -12,8 +12,6 @@ public class Order {
     private String remark;
 
     private String shoptime;
-
-    private Integer logisticsid;
 
     private Integer orderstate;
 
@@ -29,12 +27,12 @@ public class Order {
 
     private Integer commentstate;
 
-    public Integer getOrderid() {
+    public String getOrderid() {
         return orderid;
     }
 
-    public void setOrderid(Integer orderid) {
-        this.orderid = orderid;
+    public void setOrderid(String orderid) {
+        this.orderid = orderid == null ? null : orderid.trim();
     }
 
     public Integer getUserid() {
@@ -75,14 +73,6 @@ public class Order {
 
     public void setShoptime(String shoptime) {
         this.shoptime = shoptime == null ? null : shoptime.trim();
-    }
-
-    public Integer getLogisticsid() {
-        return logisticsid;
-    }
-
-    public void setLogisticsid(Integer logisticsid) {
-        this.logisticsid = logisticsid;
     }
 
     public Integer getOrderstate() {

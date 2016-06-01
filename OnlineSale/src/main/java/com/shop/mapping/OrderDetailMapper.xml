@@ -2,32 +2,32 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.shop.dao.OrderDetailMapper" >
   <resultMap id="BaseResultMap" type="com.shop.model.OrderDetail" >
-    <id column="orderId" property="orderid" jdbcType="INTEGER" />
+    <id column="orderId" property="orderid" jdbcType="VARCHAR" />
     <result column="goodId" property="goodid" jdbcType="INTEGER" />
     <result column="goodNumber" property="goodnumber" jdbcType="INTEGER" />
-    <result column="image" property="image" jdbcType="VARCHAR" />
     <result column="price" property="price" jdbcType="DOUBLE" />
+    <result column="image" property="image" jdbcType="VARCHAR" />
     <result column="totalPrice" property="totalprice" jdbcType="DOUBLE" />
   </resultMap>
   <sql id="Base_Column_List" >
-    orderId, goodId, goodNumber, image, price, totalPrice
+    orderId, goodId, goodNumber, price, image, totalPrice
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
     from orderdetail
-    where orderId = #{orderid,jdbcType=INTEGER}
+    where orderId = #{orderid,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from orderdetail
-    where orderId = #{orderid,jdbcType=INTEGER}
+    where orderId = #{orderid,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.shop.model.OrderDetail" >
     insert into orderdetail (orderId, goodId, goodNumber, 
-      image, price, totalPrice
+      price, image, totalPrice
       )
-    values (#{orderid,jdbcType=INTEGER}, #{goodid,jdbcType=INTEGER}, #{goodnumber,jdbcType=INTEGER}, 
-      #{image,jdbcType=VARCHAR}, #{price,jdbcType=DOUBLE}, #{totalprice,jdbcType=DOUBLE}
+    values (#{orderid,jdbcType=VARCHAR}, #{goodid,jdbcType=INTEGER}, #{goodnumber,jdbcType=INTEGER}, 
+      #{price,jdbcType=DOUBLE}, #{image,jdbcType=VARCHAR}, #{totalprice,jdbcType=DOUBLE}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.shop.model.OrderDetail" >
@@ -42,11 +42,11 @@
       <if test="goodnumber != null" >
         goodNumber,
       </if>
-      <if test="image != null" >
-        image,
-      </if>
       <if test="price != null" >
         price,
+      </if>
+      <if test="image != null" >
+        image,
       </if>
       <if test="totalprice != null" >
         totalPrice,
@@ -54,7 +54,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="orderid != null" >
-        #{orderid,jdbcType=INTEGER},
+        #{orderid,jdbcType=VARCHAR},
       </if>
       <if test="goodid != null" >
         #{goodid,jdbcType=INTEGER},
@@ -62,11 +62,11 @@
       <if test="goodnumber != null" >
         #{goodnumber,jdbcType=INTEGER},
       </if>
-      <if test="image != null" >
-        #{image,jdbcType=VARCHAR},
-      </if>
       <if test="price != null" >
         #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="image != null" >
+        #{image,jdbcType=VARCHAR},
       </if>
       <if test="totalprice != null" >
         #{totalprice,jdbcType=DOUBLE},
@@ -82,25 +82,25 @@
       <if test="goodnumber != null" >
         goodNumber = #{goodnumber,jdbcType=INTEGER},
       </if>
-      <if test="image != null" >
-        image = #{image,jdbcType=VARCHAR},
-      </if>
       <if test="price != null" >
         price = #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="image != null" >
+        image = #{image,jdbcType=VARCHAR},
       </if>
       <if test="totalprice != null" >
         totalPrice = #{totalprice,jdbcType=DOUBLE},
       </if>
     </set>
-    where orderId = #{orderid,jdbcType=INTEGER}
+    where orderId = #{orderid,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.shop.model.OrderDetail" >
     update orderdetail
     set goodId = #{goodid,jdbcType=INTEGER},
       goodNumber = #{goodnumber,jdbcType=INTEGER},
-      image = #{image,jdbcType=VARCHAR},
       price = #{price,jdbcType=DOUBLE},
+      image = #{image,jdbcType=VARCHAR},
       totalPrice = #{totalprice,jdbcType=DOUBLE}
-    where orderId = #{orderid,jdbcType=INTEGER}
+    where orderId = #{orderid,jdbcType=VARCHAR}
   </update>
 </mapper>

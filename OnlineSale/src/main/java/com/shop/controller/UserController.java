@@ -57,10 +57,10 @@ public class UserController {
         if (user.getUserid() != null) {
             result = userService.update(user);
             if (result > 0) {
-                return Message.getMessage(1,"",user);//成功
+                return Message.getMessage();//成功
             }
         }
-            return Message.getMessage(2, "保存失败", user);
+            return Message.getMessage(2, "保存失败","");
         }
     }
 

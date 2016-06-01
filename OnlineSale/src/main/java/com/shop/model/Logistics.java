@@ -1,17 +1,17 @@
 package com.shop.model;
 
 public class Logistics {
-    private Integer logisticsid;
+    private String logisticsid;
 
     private Integer userid;
 
-    private Integer orderid;
+    private String orderid;
 
     private String address;
 
     private String receiver;
 
-    private String phone;
+    private Integer phone;
 
     private String fixphone;
 
@@ -21,12 +21,12 @@ public class Logistics {
 
     private String logisticsnumber;
 
-    public Integer getLogisticsid() {
+    public String getLogisticsid() {
         return logisticsid;
     }
 
-    public void setLogisticsid(Integer logisticsid) {
-        this.logisticsid = logisticsid;
+    public void setLogisticsid(String logisticsid) {
+        this.logisticsid = logisticsid == null ? null : logisticsid.trim();
     }
 
     public Integer getUserid() {
@@ -37,12 +37,12 @@ public class Logistics {
         this.userid = userid;
     }
 
-    public Integer getOrderid() {
+    public String getOrderid() {
         return orderid;
     }
 
-    public void setOrderid(Integer orderid) {
-        this.orderid = orderid;
+    public void setOrderid(String orderid) {
+        this.orderid = orderid == null ? null : orderid.trim();
     }
 
     public String getAddress() {
@@ -61,12 +61,12 @@ public class Logistics {
         this.receiver = receiver == null ? null : receiver.trim();
     }
 
-    public String getPhone() {
+    public Integer getPhone() {
         return phone;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone == null ? null : phone.trim();
+    public void setPhone(Integer phone) {
+        this.phone = phone;
     }
 
     public String getFixphone() {

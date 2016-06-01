@@ -1,24 +1,24 @@
 package com.shop.model;
 
 public class OrderDetail {
-    private Integer orderid;
+    private String orderid;
 
     private Integer goodid;
 
     private Integer goodnumber;
 
-    private String image;
-
     private Double price;
+
+    private String image;
 
     private Double totalprice;
 
-    public Integer getOrderid() {
+    public String getOrderid() {
         return orderid;
     }
 
-    public void setOrderid(Integer orderid) {
-        this.orderid = orderid;
+    public void setOrderid(String orderid) {
+        this.orderid = orderid == null ? null : orderid.trim();
     }
 
     public Integer getGoodid() {
@@ -37,20 +37,20 @@ public class OrderDetail {
         this.goodnumber = goodnumber;
     }
 
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image == null ? null : image.trim();
-    }
-
     public Double getPrice() {
         return price;
     }
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image == null ? null : image.trim();
     }
 
     public Double getTotalprice() {

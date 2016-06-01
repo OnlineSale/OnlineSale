@@ -3,13 +3,13 @@ package com.shop.dao;
 import com.shop.model.OrderDetail;
 
 public interface OrderDetailMapper {
-    int deleteByPrimaryKey(Integer orderid);
+    int deleteByPrimaryKey(String orderid);
 
     int insert(OrderDetail record);
 
     int insertSelective(OrderDetail record);
 
-    OrderDetail selectByPrimaryKey(Integer orderid);
+    OrderDetail selectByPrimaryKey(String orderid);
 
     int updateByPrimaryKeySelective(OrderDetail record);
 

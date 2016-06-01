@@ -11,6 +11,8 @@ public class Shopping {
 
     private String shoptime;
 
+    private String goodname;
+
     public Integer getShoppingid() {
         return shoppingid;
     }
